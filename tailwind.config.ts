@@ -28,6 +28,6 @@ const config: Config = {
       },
     },
   },
-  plugins: ["@tailwindcss/line-clamp"],
+  plugins: [],
 };
 export default config;
