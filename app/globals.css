@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --o: #F5921E;
+  --od: #D97A10;
+  --g: #2E7D1F;
+  --gd: #1E5A12;
+  --bk: #1A1A1A;
+  --gr: #666;
+  --gl: #F5F5F5;
+  --gm: #E0E0E0;
+  --w: #fff;
+  --d: #E53935;
+  --s: #43A047;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-opensans), sans-serif;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #aaa; }
+
+/* Tabs underline active */
+.tab-active {
+  color: #F5921E;
+  border-bottom: 2px solid #F5921E;
+}
+
+/* Gallery slot hover */
+.gallery-slot:hover .slot-delete {
+  display: flex;
+}
+
+/* Drag highlight */
+.drag-over {
+  border-color: #F5921E !important;
+  background: #FFF9F4 !important;
+}
