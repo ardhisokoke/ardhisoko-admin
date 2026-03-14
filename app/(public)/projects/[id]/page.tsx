@@ -20,7 +20,7 @@ export default function ProjectDetailPage() {
 
   function whatsappUrl(text?: string) {
     return `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(
-      text || `Hi, I'm interested in ${project.name}. Please send me more details.`
+      text || `Hi, I'm interested in ${project?.name. Please send me more details.`
     )}`;
   }
 
