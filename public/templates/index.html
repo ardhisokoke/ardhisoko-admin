@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ArdhiSoko — Premium Living, Smart Investing</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--orange:#F5921E;--orange-dark:#c47518;--orange-light:#feefdd;--green:#2E7D1F;--green-dark:#256419;--green-light:#e0ecdd;--black:#1A1A1A;--gray-dark:#333;--gray:#666;--gray-light:#F5F5F5;--border:#E0E0E0;--white:#fff;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}body{font-family:'Open Sans',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden;}.top-bar{background:var(--green);display:flex;justify-content:space-between;align-items:center;padding:.38rem 5rem;font-size:.75rem;color:rgba(255,255,255,.9);}.top-bar-left{display:flex;gap:1.5rem;align-items:center;align-items:center;}.top-bar-left a{color:rgba(255,255,255,.9);text-decoration:none;}nav{position:sticky;top:0;z-index:200;background:var(--white);border-bottom:2px solid var(--border);display:flex;align-items:center;padding:.7rem 5rem;box-shadow:0 2px 12px rgba(0,0,0,.07);}.logo{display:flex;align-items:center;gap:.55rem;text-decoration:none;}.logo-triangle{width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-bottom:22px solid var(--green);flex-shrink:0;}.logo-text{font-family:'Montserrat',sans-serif;font-size:1.55rem;font-weight:800;letter-spacing:-.02em;line-height:1;}.logo-text .ardhi{color:var(--black);}.logo-text .soko{color:var(--orange);}.logo-tagline{font-size:.62rem;color:var(--gray);letter-spacing:.04em;margin-top:2px;}.nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}.nav-links a{font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:600;color:#333;text-decoration:none;transition:color .2s;}.nav-links a:hover{color:var(--orange);}.nav-cta{background:var(--orange)!important;color:var(--white)!important;padding:.6rem 1.5rem;border-radius:3px;}.hero{position:relative;overflow:hidden;min-height:520px;max-height:620px;display:flex;align-items:center;}.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80') center/cover;}.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(26,26,26,.88) 0%,rgba(26,26,26,.55) 60%,rgba(46,125,31,.4) 100%);}.hero-content{position:relative;z-index:2;padding:3rem 5rem;max-width:720px;}.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(245,146,30,.15);border:1px solid rgba(245,146,30,.5);padding:.4rem 1rem;margin-bottom:1.2rem;}.badge-dot{width:7px;height:7px;border-radius:50%;background:var(--orange);animation:blink 2s infinite;}@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}.hero-badge span{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);}h1.hero-title{font-family:'Montserrat',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.12;color:var(--white);margin-bottom:1rem;}.hl{color:var(--orange);}.hero-sub{font-size:.92rem;color:rgba(255,255,255,.72);line-height:1.7;max-width:500px;margin-bottom:1.8rem;}.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}.btn-primary{background:var(--orange);color:var(--white);border:none;padding:1rem 2.4rem;font-family:'Montserrat',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:3px;transition:background .2s;}.btn-primary:hover{background:var(--orange-dark);}.btn-outline{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,.6);padding:1rem 2.4rem;font-family:'Montserrat',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:3px;transition:all .2s;}.btn-outline:hover{background:var(--white);color:var(--black);}
+.sec{padding:3.5rem 5rem;}.sec-eyebrow{font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:.6rem;display:flex;align-items:center;gap:.6rem;}.sec-eyebrow::before{content:'';width:28px;height:3px;background:var(--orange);display:inline-block;}.sec-title{font-family:'Montserrat',sans-serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;line-height:1.18;color:var(--black);margin-bottom:1rem;}.sec-title span{color:var(--green);}.sec-desc{font-size:.95rem;color:var(--gray);line-height:1.78;max-width:560px;}.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3.5rem;}.proj-card{border-radius:8px;overflow:hidden;border:1px solid var(--border);transition:transform .35s,box-shadow .35s;cursor:pointer;display:flex;flex-direction:column;}.proj-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(0,0,0,.14);}.proj-img{height:260px;overflow:hidden;position:relative;}.proj-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}.proj-card:hover .proj-img img{transform:scale(1.06);}.proj-tag{position:absolute;top:1rem;left:1rem;font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.32rem .85rem;color:var(--white);border-radius:2px;}.tag-land{background:var(--green);}.tag-apt{background:var(--orange);}.proj-status{position:absolute;bottom:1rem;right:1rem;background:rgba(0,0,0,.7);color:var(--white);font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:700;padding:.28rem .7rem;border-radius:2px;letter-spacing:.06em;text-transform:uppercase;}.proj-body{padding:1.8rem;flex:1;display:flex;flex-direction:column;background:var(--white);}.proj-location{font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:.5rem;}.proj-name{font-family:'Montserrat',sans-serif;font-size:1.3rem;font-weight:900;color:var(--black);line-height:1.25;margin-bottom:.8rem;}.proj-desc{font-size:.88rem;color:var(--gray);line-height:1.72;margin-bottom:1.5rem;flex:1;}.proj-features{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem;}.proj-feat{display:inline-flex;align-items:center;gap:.35rem;background:var(--gray-light);padding:.3rem .8rem;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:600;color:#333;border-radius:20px;}.proj-price-row{display:flex;justify-content:space-between;align-items:center;padding-top:1.2rem;border-top:1px solid var(--border);}.proj-price{font-family:'Montserrat',sans-serif;font-size:1.5rem;font-weight:900;color:var(--green);line-height:1;}.proj-price-sub{font-size:.72rem;color:var(--gray);font-weight:600;margin-top:.2rem;}.proj-cta{background:var(--orange);color:var(--white);border:none;padding:.7rem 1.5rem;border-radius:3px;font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s;}.proj-cta:hover{background:var(--orange-dark);}.detail-strip{display:grid;grid-template-columns:1fr 1fr;overflow:hidden;min-height:480px;}.detail-strip.reverse{direction:rtl;}.detail-strip.reverse>*{direction:ltr;}.detail-img{overflow:hidden;}.detail-img img{width:100%;height:100%;object-fit:cover;}.detail-content{padding:5rem;display:flex;flex-direction:column;justify-content:center;}.strip-green{background:var(--green);}.strip-green .sec-eyebrow,.strip-green .sec-eyebrow::before{color:var(--orange);background:var(--orange);}.strip-green .sec-title{color:var(--white);}.strip-green .sec-title span{color:var(--orange);}.strip-green .sec-desc{color:rgba(255,255,255,.7);max-width:100%;}.strip-light{background:var(--gray-light);}.strip-dark{background:var(--black);}.strip-dark .sec-eyebrow{color:var(--orange);}.strip-dark .sec-eyebrow::before{background:var(--orange);}.strip-dark .sec-title{color:var(--white);}.strip-dark .sec-title span{color:var(--orange);}.strip-dark .sec-desc{color:rgba(255,255,255,.55);max-width:100%;}.detail-specs{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}.dspec{padding:1rem 1.2rem;background:rgba(255,255,255,.08);border-left:3px solid var(--orange);}.strip-light .dspec{background:var(--white);}.dspec-val{font-family:'Montserrat',sans-serif;font-size:1.1rem;font-weight:900;color:var(--orange);line-height:1;}.dspec-key{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-top:.25rem;}.strip-green .dspec-key{color:rgba(255,255,255,.6);}.strip-dark .dspec-key{color:rgba(255,255,255,.5);}.strip-light .dspec-key{color:var(--gray);}.detail-btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--orange);color:var(--white);border:none;padding:1rem 2.2rem;font-family:'Montserrat',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:3px;width:fit-content;transition:background .2s;margin-top:.5rem;}.detail-btn:hover{background:var(--orange-dark);}.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2rem;}.why-carousel-wrap{position:relative;}.why-section.sec{padding:2.8rem 4rem;}
+.why-dot.active{background:#fff;width:22px;border-radius:4px;}
+.why-dots{display:none;justify-content:center;gap:.5rem;margin-top:1.5rem;}.why-dot{width:8px;height:8px;border-radius:50%;background:var(--border);border:none;padding:0;cursor:pointer;transition:background .2s;}.why-dot.active{background:var(--green);width:22px;border-radius:4px;}.why-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:1.5rem;padding-bottom:1rem;scrollbar-width:none;margin-top:2rem;}.why-grid::-webkit-scrollbar{display:none;}.wc{border-radius:12px;overflow:hidden;position:relative;height:224px;cursor:pointer;}.wc-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s;}.wc:hover .wc-img{transform:scale(1.06);}.wc-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.78) 0%,rgba(0,0,0,.2) 55%,transparent 100%);}.wc-body{position:absolute;bottom:0;left:0;right:0;padding:1.4rem 1.5rem;}.wc-title{font-family:'Montserrat',sans-serif;font-size:.92rem;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.4rem;}.wc-desc{font-size:.78rem;color:rgba(255,255,255,.8);line-height:1.55;}.wc-tag{position:absolute;top:1rem;left:1rem;background:var(--orange);color:#fff;font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .75rem;border-radius:2px;}@media(min-width:1101px){.wc{min-width:calc(25% - 1.2rem);max-width:none;flex:1;}}@media(max-width:680px){.wc{min-width:82vw;height:200px;}}.enquiry-sec{background:var(--green);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;}.enquiry-left{padding:2.2rem 3.2rem;display:flex;flex-direction:column;justify-content:center;}.enquiry-left .sec-eyebrow{color:var(--orange);}.enquiry-left .sec-eyebrow::before{background:var(--orange);}.enquiry-left .sec-title{color:var(--white);}.enquiry-left .sec-title span{color:var(--orange);}.enquiry-left .sec-desc{color:rgba(255,255,255,.65);margin-bottom:2.5rem;max-width:100%;}.contact-items{display:flex;flex-direction:column;gap:1.2rem;}.contact-item{display:flex;align-items:center;gap:1rem;color:rgba(255,255,255,.85);font-size:.92rem;}.contact-item-icon{width:42px;height:42px;background:rgba(255,255,255,.1);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}.contact-item strong{display:block;font-weight:700;font-size:.8rem;color:var(--white);}.contact-item span{font-size:.85rem;color:rgba(255,255,255,.65);}.enquiry-right{background:var(--white);padding:2.2rem 3.2rem;}.enquiry-right h3{font-family:'Montserrat',sans-serif;font-size:1.3rem;font-weight:900;color:var(--black);margin-bottom:.4rem;}.enquiry-right p{font-size:.85rem;color:var(--gray);margin-bottom:2rem;}.form-group{margin-bottom:1.2rem;}.form-group label{display:block;font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-bottom:.5rem;}.form-group input,.form-group select,.form-group textarea{width:100%;padding:.85rem 1.1rem;border:1.5px solid var(--border);border-radius:3px;font-family:'Open Sans',sans-serif;font-size:.9rem;color:var(--black);outline:none;transition:border-color .2s;background:var(--white);appearance:none;}.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--orange);}.form-group textarea{resize:vertical;min-height:100px;}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}.form-submit{background:var(--orange);color:var(--white);border:none;width:100%;padding:1rem;font-family:'Montserrat',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:3px;transition:background .2s;margin-top:.5rem;}.form-submit:hover{background:var(--orange-dark);}footer{background:var(--black);padding:4.5rem 5rem 2rem;}.f-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:2rem;}.f-logo-wrap{margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem;}.f-logo-tri{width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-bottom:18px solid var(--green);}.f-logo-text{font-family:'Montserrat',sans-serif;font-size:1.35rem;font-weight:900;}.f-logo-text .ardhi{color:var(--white);}.f-logo-text .soko{color:var(--orange);}.f-tagline{font-size:.62rem;color:rgba(255,255,255,.3);letter-spacing:.08em;margin-top:-2px;}.f-about{font-size:.82rem;color:rgba(255,255,255,.35);line-height:1.75;margin-bottom:1.5rem;}.f-socials{display:flex;gap:.5rem;}.fsoc{width:34px;height:34px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:.82rem;color:rgba(255,255,255,.4);cursor:pointer;border-radius:3px;transition:all .2s;}.fsoc:hover{background:var(--orange);border-color:var(--orange);color:var(--white);}.f-col h5{font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:1.2rem;}.f-links{list-style:none;}.f-links li{margin-bottom:.6rem;}.f-links a{font-size:.83rem;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}.f-links a:hover{color:var(--white);}.f-contact{list-style:none;}.f-contact li{display:flex;align-items:flex-start;gap:.65rem;margin-bottom:.8rem;font-size:.83rem;color:rgba(255,255,255,.35);}.f-bottom{display:flex;justify-content:space-between;align-items:center;font-size:.74rem;color:rgba(255,255,255,.2);font-family:'Montserrat',sans-serif;font-weight:500;}.wa-btn{position:fixed;bottom:1.8rem;right:1.8rem;z-index:999;background:#25D366;color:var(--white);width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.5);transition:transform .2s;}.wa-btn:hover{transform:scale(1.1);}@media(max-width:1100px){nav,.top-bar,.sec,footer{padding-left:2rem;padding-right:2rem;}.hero-content{padding:3rem 2rem;}.hero{min-height:420px;max-height:520px;}.projects-grid{grid-template-columns:1fr;max-width:560px;margin-left:auto;margin-right:auto;}.detail-strip{grid-template-columns:1fr;}.detail-strip.reverse{direction:ltr;}.detail-img{height:300px;}.detail-content{padding:3.5rem 2rem;}.why-grid{grid-template-columns:1fr 1fr;}.enquiry-sec{grid-template-columns:1fr;}.enquiry-left,.enquiry-right{padding:2.5rem 2rem;}.f-grid{grid-template-columns:1fr 1fr;gap:2rem;}}@media(max-width:680px){.top-bar{padding:.4rem 1rem;}.top-bar-left{display:none;}nav{padding:.6rem 1rem;}.nav-links{display:none;}.hero-content{padding:2.5rem 1.5rem;}.hero{min-height:380px;max-height:480px;}.sec{padding:2rem 1.5rem;}.stats-strip{flex-wrap:wrap;}.why-dots{display:flex;}.form-row{grid-template-columns:1fr;}.f-grid{grid-template-columns:1fr;}footer{padding:3rem 1.5rem 2rem;}}
+
+/* ── TESTIMONIALS ── */
+.testi-section{background:var(--black);padding:2.8rem 4rem;}
+.testi-section .sec-eyebrow{color:var(--orange);}
+.testi-section .sec-eyebrow::before{background:var(--orange);}
+.testi-section .sec-title{color:#fff;}
+.testi-section .sec-title span{color:var(--orange);}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:1.5rem;}
+.testi-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:2rem;position:relative;}
+.testi-quote{font-size:3rem;line-height:1;color:var(--orange);font-family:Georgia,serif;position:absolute;top:1.2rem;right:1.5rem;opacity:.4;}
+.testi-text{font-size:.88rem;color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:1.5rem;font-style:italic;}
+.testi-author{display:flex;align-items:center;gap:.8rem;}
+.testi-avatar{width:44px;height:44px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:.9rem;font-weight:800;color:#fff;flex-shrink:0;}
+.testi-name{font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:800;color:#fff;}
+.testi-role{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:.1rem;}
+.testi-stars{color:var(--orange);font-size:.8rem;margin-bottom:.8rem;}
+.testi-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(46,125,31,.2);border:1px solid rgba(46,125,31,.3);padding:.2rem .7rem;border-radius:20px;font-size:.62rem;font-family:'Montserrat',sans-serif;font-weight:700;color:#66BB6A;text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem;}
+
+/* ── BLOG ── */
+.blog-section{background:#f7f7f7;padding:2.8rem 4rem;}
+.blog-section .sec-title span{color:var(--green);}
+.blog-cats{display:flex;gap:.5rem;margin:1.5rem 0 2.5rem;flex-wrap:wrap;}
+.blog-cat{background:#fff;border:1.5px solid var(--border);padding:.45rem 1.1rem;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;border-radius:20px;cursor:pointer;transition:all .2s;color:#333;}
+.blog-cat.active,.blog-cat:hover{background:var(--orange);border-color:var(--orange);color:#fff;}
+.blog-scroll-wrap{overflow:hidden;position:relative;}
+.blog-track-outer{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1);will-change:transform;}
+.blog-window{min-width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;box-sizing:border-box;}
+.blog-card{background:#fff;border-radius:12px;overflow:hidden;border:1px solid var(--border);transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column;}
+.blog-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.12);}
+.blog-img{height:230px;overflow:hidden;position:relative;flex-shrink:0;}
+.blog-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+.blog-card:hover .blog-img img{transform:scale(1.06);}
+.blog-cat-tag{position:absolute;top:1rem;left:1rem;color:#fff;font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.32rem .9rem;border-radius:3px;}
+.blog-cat-tag.market{background:var(--green);}
+.blog-cat-tag.update{background:var(--orange);}
+.blog-cat-tag.tips{background:#1565C0;}
+.blog-status{position:absolute;bottom:1rem;right:1rem;background:rgba(0,0,0,.72);color:#fff;font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:700;padding:.28rem .75rem;border-radius:3px;letter-spacing:.06em;text-transform:uppercase;}
+.blog-body{padding:1.6rem;flex:1;display:flex;flex-direction:column;}
+.blog-loc{font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:.5rem;display:flex;align-items:center;gap:.3rem;}
+.blog-title{font-family:'Montserrat',sans-serif;font-size:1.1rem;font-weight:900;color:var(--black);line-height:1.3;margin-bottom:.7rem;}
+.blog-excerpt{font-size:.84rem;color:var(--gray);line-height:1.7;margin-bottom:1.2rem;flex:1;}
+.blog-footer{display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid var(--border);}
+.blog-meta{font-size:.7rem;color:var(--gray);}
+.blog-read{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;color:var(--orange);text-decoration:none;display:inline-flex;align-items:center;gap:.35rem;transition:gap .2s;}
+.blog-read:hover{gap:.6rem;}
+.blog-nav{display:flex;align-items:center;justify-content:space-between;margin-top:1.5rem;}
+.blog-dots{display:flex;gap:.5rem;}
+.blog-dot{width:8px;height:8px;border-radius:50%;background:var(--border);border:none;padding:0;cursor:pointer;transition:all .2s;}
+.blog-dot.active{background:var(--orange);width:22px;border-radius:4px;}
+.blog-arrows{display:flex;gap:.6rem;}
+.blog-arrow{width:40px;height:40px;border-radius:50%;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;line-height:1;}
+.blog-arrow:hover{background:var(--orange);border-color:var(--orange);color:#fff;}
+@media(max-width:900px){.blog-window{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:680px){
+  .blog-section{padding:3rem 0 3rem;}
+  .blog-section .sec-eyebrow,.blog-section .sec-title,.blog-cats{padding-left:1.2rem;padding-right:1.2rem;}
+  .blog-scroll-wrap{width:100%;overflow:hidden;}
+  .blog-track-outer{display:flex;transition:transform .45s cubic-bezier(.4,0,.2,1);}
+  .blog-window{
+    min-width:100%;
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    grid-template-columns:unset;
+    gap:1.2rem;
+    padding:0 1.2rem;
+    box-sizing:border-box;
+  }
+  .blog-window::-webkit-scrollbar{display:none;}
+  .blog-card{
+    min-width:calc(100vw - 2.4rem);
+    width:calc(100vw - 2.4rem);
+    scroll-snap-align:start;
+    flex-shrink:0;
+    flex-direction:column;
+    border-radius:12px;
+    overflow:hidden;
+  }
+  .blog-img{height:52vw;min-height:200px;width:100%;flex-shrink:0;}
+  .blog-body{padding:1.3rem 1.2rem 1.5rem;}
+  .blog-title{font-size:1.05rem;line-height:1.35;}
+  .blog-excerpt{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;font-size:.85rem;}
+  .blog-nav{padding:0 1.2rem;}
+}
+
+.testi-scroll-wrap{overflow:hidden;}
+.testi-nav{display:none;justify-content:center;margin-top:1.8rem;}
+.testi-dots{display:flex;gap:.5rem;}
+.testi-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);border:none;padding:0;cursor:pointer;transition:all .2s;}
+.testi-dot.active{background:var(--orange);width:22px;border-radius:4px;}
+@media(max-width:1100px){
+  .testi-section,.blog-section{padding:2.5rem 2rem;}
+  .testi-grid{grid-template-columns:1fr;}
+  .blog-card{grid-template-columns:1fr;}
+  .blog-img{height:220px;}
+  .blog-body{padding:1.8rem;}
+  .blog-title{font-size:1.1rem;}
+}
+@media(max-width:680px){
+  .stats-strip{padding:.6rem 0;flex-wrap:wrap;gap:0;border-bottom:none;}
+  
+  
+  
+  
+  
+  .why-section.sec{padding:2rem 0;}
+  .why-section .sec-eyebrow,.why-section .sec-title{padding-left:1.2rem;padding-right:1.2rem;}
+  .why-carousel-wrap{width:100%;overflow:hidden;}
+  .why-grid{
+    display:flex !important;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    grid-template-columns:unset !important;
+    gap:1.2rem;
+    padding:1.2rem 1.2rem 0.5rem;
+    margin-top:1.2rem;
+    box-sizing:border-box;
+  }
+  .why-grid::-webkit-scrollbar{display:none;}
+  .wc{
+    min-width:calc(100vw - 2.4rem) !important;
+    width:calc(100vw - 2.4rem) !important;
+    height:65vw;
+    max-height:340px;
+    scroll-snap-align:start;
+    flex-shrink:0;
+    border-radius:12px;
+  }
+  .why-dots{display:flex !important;margin-top:1rem;padding-bottom:.5rem;}
+  .testi-section{padding:2rem 0;}
+  .testi-section .sec-eyebrow,.testi-section .sec-title{padding-left:1.2rem;padding-right:1.2rem;}
+  .testi-scroll-wrap{width:100%;overflow:hidden;}
+  .testi-grid{
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    grid-template-columns:unset;
+    gap:1.2rem;
+    padding:0 1.2rem;
+    box-sizing:border-box;
+    margin-top:1.2rem;
+  }
+  .testi-grid::-webkit-scrollbar{display:none;}
+  .testi-card{
+    min-width:calc(100vw - 2.4rem);
+    width:calc(100vw - 2.4rem);
+    scroll-snap-align:start;
+    flex-shrink:0;
+  }
+  .testi-nav{display:flex;}
+  .blog-section{padding:2rem 0;}
+  .blog-body{padding:1.4rem;}
+  .blog-title{font-size:1rem;}
+}
+
+.top-bar-left a{color:rgba(255,255,255,.9);text-decoration:none;display:inline-flex;align-items:center;gap:.35rem;transition:color .2s;}
+.top-bar-left a:hover{color:#fff;}
+.top-bar-right{display:flex;align-items:center;gap:.15rem;}
+.tb-social{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;color:rgba(255,255,255,.8);transition:background .2s,color .2s;text-decoration:none;}
+.tb-social svg{width:13px;height:13px;}
+.tb-social:hover{background:rgba(255,255,255,.2);color:#fff;}
+@media(max-width:1100px){.top-bar{padding:.38rem 2rem;}}
+@media(max-width:680px){
+  .top-bar{padding:.3rem 1rem;}
+  .top-bar-left a:last-child{display:none;}
+  .tb-social{width:24px;height:24px;}
+  .tb-social svg{width:12px;height:12px;}
+}
+/* ── NAV SEARCH ── */
+.nav-search{display:flex;align-items:center;margin-left:auto;background:#f4f4f4;border:1.5px solid var(--border);border-radius:24px;overflow:hidden;transition:border-color .2s;}
+.nav-search:focus-within{border-color:var(--orange);}
+.nav-search-input{border:none;background:transparent;padding:.45rem 1rem;font-size:.82rem;font-family:'Open Sans',sans-serif;color:var(--black);outline:none;width:240px;}
+.nav-search-input::placeholder{color:#aaa;}
+.nav-search-btn{background:var(--orange);border:none;padding:.45rem .9rem;cursor:pointer;font-size:.9rem;color:#fff;transition:background .2s;flex-shrink:0;}
+.nav-search-btn:hover{background:var(--green);}
+@media(max-width:900px){.nav-search-input{width:160px;}}
+@media(max-width:680px){
+  .nav-search{margin-left:auto;background:transparent;border:none;position:relative;}
+  .nav-search:focus-within{background:#f4f4f4;border:1.5px solid var(--orange);}
+  .nav-search-input{width:0;padding:0;opacity:0;transition:width .3s,opacity .3s,padding .3s;}
+  .nav-search-input.open{width:150px;padding:.4rem .75rem;opacity:1;}
+  .nav-search-btn{background:transparent;color:var(--orange);padding:.4rem;font-size:1.1rem;}
+  .nav-search-btn:hover{background:transparent;color:var(--green);}
+}
+
+/* ── PAGE MENU BAR ── */
+.page-menu{background:var(--orange);border-bottom:1px solid rgba(255,255,255,.15);position:sticky;top:var(--nav-h,62px);z-index:199;}
+.pm-desktop{display:flex;align-items:center;padding:0 5rem;gap:0;}
+.pm-mobile{display:none;}
+.pm-link{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.85);text-decoration:none;padding:.65rem 1.4rem;display:inline-flex;align-items:center;gap:.3rem;border-right:1px solid rgba(255,255,255,.15);transition:background .2s,color .2s;white-space:nowrap;}
+.pm-link:first-child{border-left:none;}
+.pm-link:hover,.pm-link.pm-active{background:rgba(0,0,0,.12);color:#fff;}
+.pm-dropdown{position:relative;}
+.pm-dropdown:hover .pm-drop-panel{opacity:1;pointer-events:all;transform:translateY(0);}
+.pm-drop-panel{position:absolute;top:100%;left:0;background:#fff;border-radius:0 0 8px 8px;box-shadow:0 8px 24px rgba(0,0,0,.12);min-width:240px;opacity:0;pointer-events:none;transform:translateY(-6px);transition:all .2s;z-index:300;}
+.pm-drop-link{display:block;padding:.75rem 1.2rem;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:600;color:var(--black);text-decoration:none;border-bottom:1px solid var(--border);transition:background .15s,color .15s;}
+.pm-drop-link:last-child{border-bottom:none;}
+.pm-drop-link:hover{background:var(--orange);color:#fff;}
+/* mobile grid */
+.pm-mobile{display:none;grid-template-columns:repeat(3,1fr);}
+.pm-m-link{font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.85);text-decoration:none;padding:.55rem .5rem;text-align:center;border-right:1px solid rgba(255,255,255,.15);border-bottom:1px solid rgba(255,255,255,.15);transition:background .2s;}
+.pm-m-link:hover,.pm-m-link.pm-active{background:rgba(0,0,0,.12);color:#fff;}
+.pm-m-link:nth-child(3n){border-right:none;}
+.pm-m-link:nth-child(4),.pm-m-link:nth-child(5),.pm-m-link:nth-child(6){border-bottom:none;}
+@media(max-width:900px){
+  .pm-desktop{padding:0 2rem;}
+  .pm-link{padding:.6rem .9rem;font-size:.68rem;}
+}
+@media(max-width:680px){
+  .pm-desktop{display:none;}
+  .pm-mobile{display:grid;}
+}
+</style>
+</head>
+<body>
+<div class="top-bar"><div class="top-bar-left"><a href="tel:+254711465650">&#128222; +254 711 465 650</a><a href="/cdn-cgi/l/email-protection#29485b4d41405a464246424c694e44484045074a4644">&#9993;&#65039; <span class="__cf_email__" data-cfemail="8cedfee8e4e5ffe3e7e3e7e9ccebe1ede5e0a2efe3e1">[email&#160;protected]</span></a></div><div class="top-bar-right"><a href="https://facebook.com" target="_blank" class="tb-social" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a><a href="https://instagram.com" target="_blank" class="tb-social" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://twitter.com" target="_blank" class="tb-social" aria-label="X / Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a><a href="https://youtube.com" target="_blank" class="tb-social" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg></a><a href="https://wa.me/254711465650" target="_blank" class="tb-social" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a></div></div>
+<nav><a href="#" class="logo"><div class="logo-triangle"></div><div><div class="logo-text"><span class="ardhi">Ardhi</span><span class="soko">Soko</span></div><div class="logo-tagline">Premium Living, Smart Investing</div></div></a><div class="nav-search"><input type="text" class="nav-search-input" placeholder="Search properties, locations..."><button class="nav-search-btn">&#128269;</button></div></nav>
+<div class="page-menu">
+  <div class="pm-desktop">
+    <a href="index.html" class="pm-link pm-active">Home</a>
+    <div class="pm-dropdown">
+      <a href="properties.html" class="pm-link">Properties &#9660;</a>
+      <div class="pm-drop-panel">
+        <a href="malindi.html" class="pm-drop-link">&#127968; Malindi Ocean View Acres</a>
+        <a href="konza.html" class="pm-drop-link">&#127963; Konza Technopolis Plots</a>
+        <a href="kamakis.html" class="pm-drop-link">&#127748; Kamakis Urban Residences</a>
+      </div>
+    </div>
+    <a href="about.html" class="pm-link">About Us</a>
+    <a href="blog.html" class="pm-link">Blog</a>
+    <a href="#testimonials" class="pm-link">Testimonials</a>
+    <a href="#" class="pm-link">Media</a>
+  </div>
+  <div class="pm-mobile">
+    <a href="index.html" class="pm-m-link pm-active">Home</a>
+    <a href="properties.html" class="pm-m-link">Properties</a>
+    <a href="about.html" class="pm-m-link">About Us</a>
+    <a href="blog.html" class="pm-m-link">Blog</a>
+    <a href="#testimonials" class="pm-m-link">Testimonials</a>
+    <a href="#" class="pm-m-link">Media</a>
+  </div>
+</div>
+<div class="hero"><div class="hero-bg"></div><div class="hero-content"><div class="hero-badge"><div class="badge-dot"></div><span>3 Premium Projects &mdash; Across Kenya</span></div><h1 class="hero-title">Own Prime Land.<br>Live <span class="hl">Premium.</span><br>Invest Smart.</h1><p class="hero-sub">ArdhiSoko brings you three hand-picked property investments &mdash; 1-acre plots in Malindi, 1/8-acre plots near Konza Technopolis, and upcoming apartments in Kamakis, Ruiru.</p><div class="hero-btns"><button class="btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Our Projects</button><button class="btn-outline" onclick="document.getElementById('enquiry').scrollIntoView({behavior:'smooth'})">Enquire Now</button></div></div></div>
+<section class="sec" style="background:var(--white)" id="projects"><div class="sec-eyebrow">Our Projects</div><h2 class="sec-title">Three locations.<br><span>One trusted developer.</span></h2><p class="sec-desc">Whether you are looking for a coastal retreat, a smart tech-city investment, or a modern apartment &mdash; ArdhiSoko has the right property for you.</p><div class="projects-grid"><div class="proj-card"><a href="malindi.html"><div class="proj-img"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" alt="Malindi Ocean View Acres"><span class="proj-tag tag-land">Land for Sale</span><span class="proj-status">Available</span></div></a><div class="proj-body"><div class="proj-location">&#128205; Malindi, Kilifi County</div><div class="proj-name">Malindi Ocean View Acres</div><p class="proj-desc">Premium 1-acre plots with ocean views in the heart of Malindi tourism zone.</p><div class="proj-features"><span class="proj-feat">&#10003; Title Deed Ready</span><span class="proj-feat">&#10003; Access Road</span><span class="proj-feat">&#10003; Electricity</span></div><div class="proj-price-row"><div><div class="proj-price">KES 1.5M</div><div class="proj-price-sub">/plot</div></div><button class="proj-cta" onclick="window.location='malindi.html'">View Details</button></div></div></div><div class="proj-card"><a href="konza.html"><div class="proj-img"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80" alt="Konza Technopolis Plots"><span class="proj-tag tag-land">Land for Sale</span><span class="proj-status">Available</span></div></a><div class="proj-body"><div class="proj-location">&#128205; Konza, Machakos County</div><div class="proj-name">Konza Technopolis Plots</div><p class="proj-desc">Strategic 1/8-acre plots near Konza SGR station and tech city hub.</p><div class="proj-features"><span class="proj-feat">&#10003; SGR Proximity</span><span class="proj-feat">&#10003; Title Deed</span><span class="proj-feat">&#10003; Surveyed</span></div><div class="proj-price-row"><div><div class="proj-price">KES 450K</div><div class="proj-price-sub">/plot</div></div><button class="proj-cta" onclick="window.location='konza.html'">View Details</button></div></div></div><div class="proj-card"><a href="kamakis.html"><div class="proj-img"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80" alt="Kamakis Urban Residences"><span class="proj-tag tag-apt">Apartments</span><span class="proj-status">Off-Plan</span></div></a><div class="proj-body"><div class="proj-location">&#128205; Kamakis, Ruiru</div><div class="proj-name">Kamakis Urban Residences</div><p class="proj-desc">Modern 1-3 bedroom apartments in the fast-growing Kamakis corridor.</p><div class="proj-features"><span class="proj-feat">&#10003; Swimming Pool</span><span class="proj-feat">&#10003; Parking</span><span class="proj-feat">&#10003; Security</span></div><div class="proj-price-row"><div><div class="proj-price">From KES 3.2M</div><div class="proj-price-sub">/unit</div></div><button class="proj-cta" onclick="window.location='kamakis.html'">View Details</button></div></div></div></div></section>
+<section class="sec why-section" style="background:#F2F2F2"><div class="sec-eyebrow">Why ArdhiSoko</div><h2 class="sec-title">Buy with <span style="color:var(--green)">total confidence</span></h2><div class="why-carousel-wrap"><div class="why-grid" id="why-grid"><div class="wc"><img class="wc-img" src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=700&q=80" alt="Title Deed Verified"><div class="wc-overlay"></div><span class="wc-tag">Legal</span><div class="wc-body"><div class="wc-title">Title Deed Verified</div><p class="wc-desc">Every plot comes with a clean, verified title deed.</p></div></div><div class="wc"><img class="wc-img" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=700&q=80" alt="Flexible Payment Plans"><div class="wc-overlay"></div><span class="wc-tag">Finance</span><div class="wc-body"><div class="wc-title">Flexible Payment Plans</div><p class="wc-desc">Secure your plot with a deposit and pay over time.</p></div></div><div class="wc"><img class="wc-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80" alt="Free Site Visits"><div class="wc-overlay"></div><span class="wc-tag">Service</span><div class="wc-body"><div class="wc-title">Free Site Visits</div><p class="wc-desc">We take you to any site at no cost.</p></div></div><div class="wc"><img class="wc-img" src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=700&q=80" alt="High Appreciation Areas"><div class="wc-overlay"></div><span class="wc-tag">Investment</span><div class="wc-body"><div class="wc-title">High Appreciation Areas</div><p class="wc-desc">Among Kenya's fastest-appreciating corridors.</p></div></div></div><div class="why-dots" id="why-dots"><button class="why-dot active" onclick="scrollToCard(0)"></button><button class="why-dot" onclick="scrollToCard(1)"></button><button class="why-dot" onclick="scrollToCard(2)"></button><button class="why-dot" onclick="scrollToCard(3)"></button></div></div></section>
+<div class="enquiry-sec" id="enquiry"><div class="enquiry-left"><div class="sec-eyebrow">Get in Touch</div><h2 class="sec-title">Interested in a <span>project?</span></h2><p class="sec-desc">Fill in the form and one of our agents will get back to you within 24 hours.</p><div class="contact-items"><div class="contact-item"><div class="contact-item-icon">&#128222;</div><div><strong>Call / WhatsApp</strong><span>+254 711 465 650</span></div></div><div class="contact-item"><div class="contact-item-icon">&#9993;&#65039;</div><div><strong>Email Us</strong><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3c54595050537c5d4e5854554f535753125f53125759">[email&#160;protected]</a></span></div></div><div class="contact-item"><div class="contact-item-icon">&#128205;</div><div><strong>Office</strong><span>Westlands, Nairobi, Kenya</span></div></div></div></div><div class="enquiry-right"><h3>Send Us an Enquiry</h3><p>We will respond within 24 hours.</p><div class="form-row"><div class="form-group"><label>First Name</label><input type="text" placeholder="John"></div><div class="form-group"><label>Last Name</label><input type="text" placeholder="Kamau"></div></div><div class="form-group"><label>Phone / WhatsApp</label><input type="tel" placeholder="+254 7XX XXX XXX"></div><div class="form-group"><label>Email</label><input type="email" placeholder="john@email.com"></div><div class="form-group"><label>Which Project?</label><select><option value="">Select a project...</option><option>Malindi Ocean View Acres (48 &mdash; KES 1.5M)</option><option>Konza Technopolis Plots (120 &mdash; KES 450K)</option><option>Kamakis Urban Residences (36 &mdash; From KES 3.2M)</option><option>All projects</option></select></div><div class="form-group"><label>Message</label><textarea placeholder="Tell us more about what you are looking for..."></textarea></div><button class="form-submit" onclick="this.textContent='Sent! We will be in touch.';this.style.background='#43A047';this.disabled=true">Send Enquiry &rarr;</button></div></div>
+
+<!-- TESTIMONIALS -->
+<section class="testi-section" id="testimonials">
+  <div class="sec-eyebrow">Client Stories</div>
+  <h2 class="sec-title">Trusted by <span>real buyers</span></h2>
+  <div class="testi-scroll-wrap">
+    <div class="testi-grid" id="testi-track">
+      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-badge">&#10003; Verified Buyer</div><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">I bought a 1-acre plot in Malindi through ArdhiSoko and the process was so smooth. Title deed was ready within 3 weeks. The team organised a free site visit and I fell in love with the land immediately.</p><div class="testi-author"><div class="testi-avatar">JK</div><div><div class="testi-name">James Kamau</div><div class="testi-role">Malindi Plot Owner &mdash; Nairobi</div></div></div></div>
+      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-badge">&#10003; Verified Buyer</div><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">The Konza plots are the best investment I have made. ArdhiSoko was transparent from day one — no hidden charges. The payment plan made it very affordable. Highly recommend to anyone looking for land near the SGR.</p><div class="testi-author"><div class="testi-avatar">AW</div><div><div class="testi-name">Amina Wanjiru</div><div class="testi-role">Konza Plot Owner &mdash; Mombasa</div></div></div></div>
+      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-badge">&#10003; Verified Buyer</div><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">Professional, honest, and fast. I was sceptical at first but ArdhiSoko proved me wrong. I registered my interest for Kamakis apartments and have been updated every step of the way. Excellent customer service.</p><div class="testi-author"><div class="testi-avatar">DO</div><div><div class="testi-name">David Ochieng</div><div class="testi-role">Kamakis Apartments &mdash; Kisumu</div></div></div></div>
+    </div>
+  </div>
+  <div class="testi-nav" id="testi-nav">
+    <div class="testi-dots" id="testi-dots">
+      <button class="testi-dot active"></button>
+      <button class="testi-dot"></button>
+      <button class="testi-dot"></button>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog-section" id="blog">
+  <div class="sec-eyebrow">Latest News</div>
+  <h2 class="sec-title">Property insights &amp; <span>project updates</span></h2>
+  <div class="blog-cats">
+    <button class="blog-cat active" onclick="filterBlog('all',this)">All Posts</button>
+    <button class="blog-cat" onclick="filterBlog('market',this)">Market News</button>
+    <button class="blog-cat" onclick="filterBlog('update',this)">Project Updates</button>
+    <button class="blog-cat" onclick="filterBlog('tips',this)">Buying Tips</button>
+  </div>
+  <div class="blog-scroll-wrap">
+    <div class="blog-track-outer" id="blog-track">
+      <div class="blog-window">
+        <div class="blog-card" data-cat="market"><div class="blog-img"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&q=80" alt="Market News"><span class="blog-cat-tag market">Market News</span><span class="blog-status">Trending</span></div><div class="blog-body"><div class="blog-loc">&#128205; Konza, Machakos County</div><div class="blog-title">Why Konza Technopolis Land is Doubling in Value Every 2 Years</div><p class="blog-excerpt">With the SGR station, data centres, and government offices all confirmed for Konza, early investors are already seeing massive returns on their land.</p><div class="blog-footer"><span class="blog-meta">March 2025 &nbsp;&middot;&nbsp; 4 min read</span><a href="#enquiry" class="blog-read">Read More &#8594;</a></div></div></div>
+        <div class="blog-card" data-cat="update"><div class="blog-img"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80" alt="Project Update"><span class="blog-cat-tag update">Project Update</span><span class="blog-status">Hot</span></div><div class="blog-body"><div class="blog-loc">&#128205; Malindi, Kilifi County</div><div class="blog-title">Malindi Phase 2 Now Open &mdash; Only 12 Plots Remaining</div><p class="blog-excerpt">Following the sell-out success of Phase 1, ArdhiSoko has released Phase 2 of the Malindi Ocean View Acres project. Act fast &mdash; demand is extremely high.</p><div class="blog-footer"><span class="blog-meta">February 2025 &nbsp;&middot;&nbsp; 3 min read</span><a href="#enquiry" class="blog-read">Read More &#8594;</a></div></div></div>
+        <div class="blog-card" data-cat="tips"><div class="blog-img"><img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=700&q=80" alt="Buying Tips"><span class="blog-cat-tag tips">Buying Tips</span><span class="blog-status">Must Read</span></div><div class="blog-body"><div class="blog-loc">&#128205; Kenya Wide</div><div class="blog-title">5 Things to Check Before Buying Land in Kenya</div><p class="blog-excerpt">From title deed verification to land rates clearance &mdash; here is a simple checklist every Kenyan land buyer must go through before signing anything.</p><div class="blog-footer"><span class="blog-meta">January 2025 &nbsp;&middot;&nbsp; 5 min read</span><a href="#enquiry" class="blog-read">Read More &#8594;</a></div></div></div>
+      </div>
+      <div class="blog-window">
+        <div class="blog-card" data-cat="market"><div class="blog-img"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=700&q=80" alt="Market News"><span class="blog-cat-tag market">Market News</span><span class="blog-status">New</span></div><div class="blog-body"><div class="blog-loc">&#128205; Malindi, Kilifi County</div><div class="blog-title">Malindi Tourism Boom is Pushing Property Prices Up Fast</div><p class="blog-excerpt">International tourist arrivals to Malindi grew by 38% in 2024. Hotels are full and demand for holiday homes and Airbnb retreats is at an all-time high.</p><div class="blog-footer"><span class="blog-meta">December 2024 &nbsp;&middot;&nbsp; 4 min read</span><a href="#enquiry" class="blog-read">Read More &#8594;</a></div></div></div>
+        <div class="blog-card" data-cat="update"><div class="blog-img"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=700&q=80" alt="Project Update"><span class="blog-cat-tag update">Project Update</span><span class="blog-status">Launch Soon</span></div><div class="blog-body"><div class="blog-loc">&#128205; Kamakis, Ruiru</div><div class="blog-title">Kamakis Apartments &mdash; Construction Update and Launch Date</div><p class="blog-excerpt">ArdhiSoko is pleased to announce that groundbreaking for Kamakis Urban Residences is scheduled for Q2 2025. Register now to lock in off-plan pricing.</p><div class="blog-footer"><span class="blog-meta">November 2024 &nbsp;&middot;&nbsp; 3 min read</span><a href="#enquiry" class="blog-read">Read More &#8594;</a></div></div></div>
+        <div class="blog-card" data-cat="tips"><div class="blog-img"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=700&q=80" alt="Buying Tips"><span class="blog-cat-tag tips">Buying Tips</span><span class="blog-status">Popular</span></div><div class="blog-body"><div class="blog-loc">&#128205; Kenya Wide</div><div class="blog-title">How to Buy Land in Kenya with a Flexible Payment Plan</div><p class="blog-excerpt">You do not need to have the full amount to buy land. Secure your plot with as little as 30% deposit and pay the balance over time.</p><div class="blog-footer"><span class="blog-meta">October 2024 &nbsp;&middot;&nbsp; 4 min read</span><a href="#enquiry" class="blog-read">Read More &#8594;</a></div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="blog-nav">
+    <div class="blog-dots" id="blog-dots">
+      <button class="blog-dot active"></button>
+      <button class="blog-dot"></button>
+    </div>
+    <div class="blog-arrows">
+      <button class="blog-arrow" onclick="moveBlog(-1)">&#8592;</button>
+      <button class="blog-arrow" onclick="moveBlog(1)">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Blog carousel — 3-per-window desktop, 1-per-card mobile swipe
+(function(){
+  var track = document.getElementById('blog-track');
+  var dotsEl = document.getElementById('blog-dots');
+  var wrap  = document.querySelector('.blog-scroll-wrap');
+  if(!track) return;
+  var cur = 0, timer;
+  var windows = Array.from(track.querySelectorAll('.blog-window'));
+  var total = windows.length;
+
+  function isMobile(){ return window.innerWidth <= 680; }
+
+  // Build dots for current mode
+  function buildDots(){
+    if(!dotsEl) return;
+    var count = isMobile() ? windows.reduce(function(s,w){ return s + w.querySelectorAll('.blog-card').length; }, 0) : total;
+    dotsEl.innerHTML = '';
+    for(var i=0;i<count;i++){
+      var b = document.createElement('button');
+      b.className = 'blog-dot' + (i===0?' active':'');
+      b.setAttribute('data-i', i);
+      b.addEventListener('click', function(){ gotoSlide(+this.getAttribute('data-i')); resetTimer(); });
+      dotsEl.appendChild(b);
+    }
+  }
+
+  function setDot(i){
+    Array.from(dotsEl.querySelectorAll('.blog-dot')).forEach(function(d,j){ d.classList.toggle('active', j===i); });
+  }
+
+  // Desktop: slide full windows
+  function gotoWindow(i){
+    cur = ((i % total) + total) % total;
+    track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+    setDot(cur);
+  }
+
+  // Mobile: global card index across all windows
+  var allCards = [];
+  function getAllCards(){
+    allCards = Array.from(track.querySelectorAll('.blog-card')).filter(function(c){ return c.style.visibility !== 'hidden'; });
+  }
+
+  function gotoSlide(idx){
+    if(!isMobile()){ gotoWindow(idx); return; }
+    getAllCards();
+    idx = ((idx % allCards.length) + allCards.length) % allCards.length;
+    cur = idx;
+    // Find which window this card is in
+    var card = allCards[idx];
+    var win = card.closest('.blog-window');
+    var winIdx = windows.indexOf(win);
+    track.style.transform = 'translateX(-' + (winIdx * 100) + '%)';
+    // Scroll window to show correct card
+    var cardIdx = Array.from(win.querySelectorAll('.blog-card')).indexOf(card);
+    win.scrollLeft = cardIdx * win.offsetWidth;
+    setDot(cur);
+  }
+
+  window.moveBlog = function(dir){
+    getAllCards();
+    var count = isMobile() ? allCards.length : total;
+    cur = ((cur + dir + count) % count);
+    gotoSlide(cur);
+    resetTimer();
+  };
+
+  // On mobile, sync dot as user swipes inside a window
+  windows.forEach(function(win, wi){
+    win.addEventListener('scroll', function(){
+      if(!isMobile()) return;
+      getAllCards();
+      var cardW = win.offsetWidth;
+      var idx = Math.round(win.scrollLeft / cardW);
+      var cards = Array.from(win.querySelectorAll('.blog-card'));
+      var globalIdx = allCards.indexOf(cards[idx] || cards[0]);
+      if(globalIdx >= 0){ cur = globalIdx; setDot(cur); }
+    });
+  });
+
+  window.filterBlog = function(cat, btn){
+    document.querySelectorAll('.blog-cat').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    track.querySelectorAll('.blog-card').forEach(function(card){
+      card.style.visibility = (cat==='all' || card.dataset.cat===cat) ? '' : 'hidden';
+    });
+    cur = 0;
+    buildDots();
+    gotoSlide(0);
+    resetTimer();
+  };
+
+  function resetTimer(){
+    clearInterval(timer);
+    timer = setInterval(function(){ window.moveBlog(1); }, 5000);
+  }
+
+  if(wrap){
+    wrap.addEventListener('mouseenter', function(){ clearInterval(timer); });
+    wrap.addEventListener('mouseleave', resetTimer);
+  }
+
+  window.addEventListener('resize', function(){ buildDots(); gotoSlide(0); });
+
+  buildDots();
+  gotoSlide(0);
+  resetTimer();
+})();
+
+// Testimonials mobile swipe dots sync
+(function(){
+  var track = document.getElementById('testi-track');
+  var dotsEl = document.getElementById('testi-dots');
+  if(!track || !dotsEl) return;
+  var cards = Array.from(track.querySelectorAll('.testi-card'));
+  var dots = Array.from(dotsEl.querySelectorAll('.testi-dot'));
+
+  function setDot(i){
+    dots.forEach(function(d,j){ d.classList.toggle('active', j===i); });
+  }
+
+  dots.forEach(function(d,i){
+    d.addEventListener('click', function(){
+      track.scrollTo({left: i * track.offsetWidth, behavior:'smooth'});
+      setDot(i);
+    });
+  });
+
+  track.addEventListener('scroll', function(){
+    var idx = Math.round(track.scrollLeft / track.offsetWidth);
+    setDot(idx);
+  });
+})();
+</script>
+
+<footer><div class="f-grid"><div><div class="f-logo-wrap"><div class="f-logo-tri"></div><div><div class="f-logo-text"><span class="ardhi">Ardhi</span><span class="soko">Soko</span></div><div class="f-tagline">Premium Living, Smart Investing</div></div></div><p class="f-about">ArdhiSoko is a Kenyan property developer offering premium land and residential investments in Malindi, Konza, and Kamakis Ruiru. Every project is title-deed verified and backed by flexible payment plans.</p><div class="f-socials"><div class="fsoc">X</div><div class="fsoc">f</div><div class="fsoc">in</div><div class="fsoc">&#9654;</div><div class="fsoc">&#128247;</div></div></div><div class="f-col"><h5>Our Projects</h5><ul class="f-links"><li><a href="#malindi">Malindi Ocean View Acres</a></li><li><a href="#konza">Konza Technopolis Plots</a></li><li><a href="#kamakis">Kamakis Urban Residences</a></li></ul></div><div class="f-col"><h5>Company</h5><ul class="f-links"><li><a href="#">About ArdhiSoko</a></li><li><a href="#">Payment Plans</a></li><li><a href="#">Site Visits</a></li><li><a href="#enquiry">Contact</a></li></ul></div><div class="f-col"><h5>Contact</h5><ul class="f-contact"><li>&#128205; Westlands, Nairobi, Kenya</li><li>&#128222; +254 711 465 650</li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>&copy; 2025 ArdhiSoko. All rights reserved.</span>
+      <span>Premium Living, Smart Investing</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/254757364642?text=Hi%20ArdhiSoko%2C%20I%27m%20interested%20in%20your%20properties." class="wa-btn" target="_blank">&#128172;</a>
+
+<script>
+// Why carousel — desktop scroll snap + mobile swipe dots sync
+(function(){
+  var grid = document.getElementById('why-grid');
+  var dotsEl = document.getElementById('why-dots');
+  if(!grid) return;
+  var dots = dotsEl ? Array.from(dotsEl.querySelectorAll('.why-dot')) : [];
+
+  function setDot(i){
+    dots.forEach(function(d,j){ d.classList.toggle('active', j===i); });
+  }
+
+  window.scrollToCard = function(i){
+    var cards = grid.querySelectorAll('.wc');
+    if(cards[i]) grid.scrollTo({left: cards[i].offsetLeft - grid.offsetLeft, behavior:'smooth'});
+    setDot(i);
+  };
+
+  // Sync dot on swipe
+  grid.addEventListener('scroll', function(){
+    var cards = Array.from(grid.querySelectorAll('.wc'));
+    var closest = 0, minDist = Infinity;
+    cards.forEach(function(card, i){
+      var dist = Math.abs(card.getBoundingClientRect().left - grid.getBoundingClientRect().left);
+      if(dist < minDist){ minDist = dist; closest = i; }
+    });
+    setDot(closest);
+  });
+})();
+
+// Mobile search toggle
+(function(){
+  var btn = document.querySelector('.nav-search-btn');
+  var inp = document.querySelector('.nav-search-input');
+  if(!btn || !inp) return;
+  btn.addEventListener('click', function(){
+    if(window.innerWidth > 680) return;
+    inp.classList.toggle('open');
+    if(inp.classList.contains('open')){ inp.focus(); }
+  });
+  document.addEventListener('click', function(e){
+    if(window.innerWidth > 680) return;
+    if(!e.target.closest('.nav-search')){ inp.classList.remove('open'); }
+  });
+})();
+</script>
+
+</body>
+</html>

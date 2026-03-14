@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Konza Technopolis Plots — ArdhiSoko</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#F5921E;--orange-dark:#c47518;--orange-light:#feefdd;
+  --green:#2E7D1F;--green-dark:#256419;--green-light:#e0ecdd;
+  --black:#1A1A1A;--gray-dark:#333;--gray:#666;--gray-light:#F5F5F5;
+  --border:#E0E0E0;--white:#fff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Open Sans',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden;}
+
+/* ── TOP BAR ── */
+.top-bar{background:var(--green);display:flex;justify-content:space-between;align-items:center;padding:.38rem 5rem;font-size:.75rem;color:rgba(255,255,255,.9);}
+.top-bar-left{display:flex;gap:1.5rem;align-items:center;}
+.top-bar-left a{color:rgba(255,255,255,.9);text-decoration:none;display:inline-flex;align-items:center;gap:.35rem;transition:color .2s;}
+.top-bar-left a:hover{color:#fff;}
+.top-bar-right{display:flex;align-items:center;gap:.15rem;}
+.tb-social{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;color:rgba(255,255,255,.8);transition:background .2s,color .2s;text-decoration:none;}
+.tb-social svg{width:13px;height:13px;}
+.tb-social:hover{background:rgba(255,255,255,.2);color:#fff;}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:200;background:var(--white);border-bottom:2px solid var(--border);display:flex;align-items:center;padding:.7rem 5rem;box-shadow:0 2px 12px rgba(0,0,0,.07);}
+.logo{display:flex;align-items:center;gap:.55rem;text-decoration:none;}
+.logo-triangle{width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-bottom:22px solid var(--green);flex-shrink:0;}
+.logo-text{font-family:'Montserrat',sans-serif;font-size:1.55rem;font-weight:800;letter-spacing:-.02em;line-height:1;}
+.logo-text .ardhi{color:var(--black);}.logo-text .soko{color:var(--orange);}
+.logo-tagline{font-size:.62rem;color:var(--gray);letter-spacing:.04em;margin-top:2px;}
+.nav-search{display:flex;align-items:center;margin-left:auto;background:#f4f4f4;border:1.5px solid var(--border);border-radius:24px;overflow:hidden;transition:border-color .2s;}
+.nav-search:focus-within{border-color:var(--orange);}
+.nav-search-input{border:none;background:transparent;padding:.45rem 1rem;font-size:.82rem;font-family:'Open Sans',sans-serif;color:var(--black);outline:none;width:240px;}
+.nav-search-input::placeholder{color:#aaa;}
+.nav-search-btn{background:var(--orange);border:none;padding:.45rem .9rem;cursor:pointer;font-size:.9rem;color:#fff;transition:background .2s;flex-shrink:0;}
+.nav-search-btn:hover{background:var(--green);}
+
+/* ── PAGE MENU ── */
+.page-menu{background:var(--orange);border-bottom:1px solid rgba(255,255,255,.15);position:sticky;top:62px;z-index:199;}
+.pm-desktop{display:flex;align-items:center;padding:0 5rem;}
+.pm-link{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.85);text-decoration:none;padding:.65rem 1.4rem;display:inline-flex;align-items:center;gap:.3rem;border-right:1px solid rgba(255,255,255,.15);transition:background .2s,color .2s;white-space:nowrap;}
+.pm-link:hover,.pm-link.pm-active{background:rgba(0,0,0,.12);color:#fff;}
+.pm-dropdown{position:relative;}
+.pm-dropdown:hover .pm-drop-panel{opacity:1;pointer-events:all;transform:translateY(0);}
+.pm-drop-panel{position:absolute;top:100%;left:0;background:#fff;border-radius:0 0 8px 8px;box-shadow:0 8px 24px rgba(0,0,0,.12);min-width:240px;opacity:0;pointer-events:none;transform:translateY(-6px);transition:all .2s;z-index:300;}
+.pm-drop-link{display:block;padding:.75rem 1.2rem;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:600;color:var(--black);text-decoration:none;border-bottom:1px solid var(--border);transition:background .15s,color .15s;}
+.pm-drop-link:last-child{border-bottom:none;}
+.pm-drop-link:hover{background:var(--orange);color:#fff;}
+.pm-mobile{display:none;grid-template-columns:repeat(3,1fr);}
+.pm-m-link{font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.85);text-decoration:none;padding:.55rem .5rem;text-align:center;border-right:1px solid rgba(255,255,255,.15);border-bottom:1px solid rgba(255,255,255,.15);transition:background .2s;}
+.pm-m-link:hover,.pm-m-link.pm-active{background:rgba(0,0,0,.12);color:#fff;}
+.pm-m-link:nth-child(3n){border-right:none;}
+.pm-m-link:nth-child(4),.pm-m-link:nth-child(5),.pm-m-link:nth-child(6){border-bottom:none;}
+
+/* ── BREADCRUMB / PAGE HERO ── */
+.page-hero{background:var(--green);padding:2.5rem 5rem;}
+.page-hero-eyebrow{font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:.6rem;}
+.page-hero h1{font-family:'Montserrat',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;color:#fff;line-height:1.2;}
+.page-hero h1 span{color:var(--orange);}
+.page-hero p{font-size:.9rem;color:rgba(255,255,255,.7);margin-top:.8rem;max-width:560px;line-height:1.7;}
+.breadcrumb{display:flex;align-items:center;gap:.5rem;font-size:.72rem;font-family:'Montserrat',sans-serif;font-weight:600;color:rgba(255,255,255,.5);margin-bottom:1rem;}
+.breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s;}
+.breadcrumb a:hover{color:#fff;}
+.breadcrumb span{color:rgba(255,255,255,.8);}
+
+/* ── PHOTO GALLERY ── */
+.gallery-wrap{background:#111;position:relative;}
+.gallery-main{position:relative;height:520px;overflow:hidden;cursor:zoom-in;}
+.gallery-main img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.gallery-main:hover img{transform:scale(1.03);}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55) 0%,transparent 50%);}
+.gallery-badge{position:absolute;top:1.5rem;left:1.5rem;background:var(--green);color:#fff;font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.35rem .9rem;border-radius:3px;}
+.gallery-status{position:absolute;top:1.5rem;right:1.5rem;background:var(--orange);color:#fff;font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.35rem .9rem;border-radius:3px;display:flex;align-items:center;gap:.4rem;}
+.gallery-status::before{content:'';width:7px;height:7px;border-radius:50%;background:#fff;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.gallery-counter{position:absolute;bottom:1.5rem;right:1.5rem;background:rgba(0,0,0,.6);color:#fff;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;padding:.35rem .8rem;border-radius:3px;display:flex;align-items:center;gap:.4rem;}
+.gallery-arrows{position:absolute;bottom:1.5rem;left:1.5rem;display:flex;gap:.5rem;}
+.g-arrow{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);color:#fff;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;backdrop-filter:blur(4px);}
+.g-arrow:hover{background:var(--orange);border-color:var(--orange);}
+.gallery-thumbs{display:flex;gap:6px;padding:6px;background:#111;overflow-x:auto;scrollbar-width:none;}
+.gallery-thumbs::-webkit-scrollbar{display:none;}
+.g-thumb{width:100px;height:68px;flex-shrink:0;border-radius:4px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color .2s,opacity .2s;opacity:.6;}
+.g-thumb:hover{opacity:1;}
+.g-thumb.active{border-color:var(--orange);opacity:1;}
+.g-thumb img{width:100%;height:100%;object-fit:cover;}
+
+/* ── MAIN CONTENT LAYOUT ── */
+.product-layout{display:grid;grid-template-columns:1fr 380px;gap:0;align-items:start;padding:3.5rem 5rem;gap:3rem;}
+
+/* ── LEFT COLUMN ── */
+.prod-left{}
+
+/* Price bar */
+.price-bar{display:flex;align-items:center;justify-content:space-between;background:var(--gray-light);border-radius:8px;padding:1.4rem 1.8rem;margin-bottom:2rem;border-left:4px solid var(--green);}
+.price-main{font-family:'Montserrat',sans-serif;font-size:2.2rem;font-weight:900;color:var(--green);line-height:1;}
+.price-sub{font-size:.78rem;color:var(--gray);margin-top:.25rem;}
+.price-meta{text-align:right;}
+.price-badge{display:inline-block;background:var(--orange-light);color:var(--orange-dark);font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:800;padding:.3rem .75rem;border-radius:20px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.3rem;}
+.price-avail{font-size:.75rem;color:var(--gray);}
+
+/* Section blocks */
+.prod-section{margin-bottom:2.5rem;}
+.prod-section-title{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:.9rem;display:flex;align-items:center;gap:.6rem;}
+.prod-section-title::before{content:'';width:22px;height:2px;background:var(--orange);}
+
+/* Description */
+.prod-desc{font-size:.93rem;color:var(--gray-dark);line-height:1.85;}
+.prod-desc p{margin-bottom:.9rem;}
+.prod-desc p:last-child{margin:0;}
+
+/* Key specs grid */
+.specs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.spec-card{background:var(--gray-light);border-radius:8px;padding:1.1rem 1rem;border-bottom:3px solid var(--orange);}
+.spec-val{font-family:'Montserrat',sans-serif;font-size:1.2rem;font-weight:900;color:var(--black);line-height:1;}
+.spec-key{font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gray);margin-top:.3rem;}
+
+/* Features list */
+.features-grid{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;}
+.feat-item{display:flex;align-items:center;gap:.65rem;font-size:.86rem;color:var(--gray-dark);}
+.feat-icon{width:28px;height:28px;border-radius:50%;background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:.78rem;flex-shrink:0;color:var(--green);}
+
+/* Payment plan */
+.payment-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.pay-card{border:1.5px solid var(--border);border-radius:8px;padding:1.2rem;text-align:center;transition:border-color .2s,box-shadow .2s;}
+.pay-card.featured{border-color:var(--orange);background:var(--orange-light);}
+.pay-card:hover{border-color:var(--orange);box-shadow:0 4px 16px rgba(245,146,30,.15);}
+.pay-label{font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);margin-bottom:.5rem;}
+.pay-card.featured .pay-label{color:var(--orange-dark);}
+.pay-pct{font-family:'Montserrat',sans-serif;font-size:1.6rem;font-weight:900;color:var(--black);}
+.pay-card.featured .pay-pct{color:var(--orange-dark);}
+.pay-detail{font-size:.72rem;color:var(--gray);margin-top:.3rem;line-height:1.5;}
+.pay-tag{display:inline-block;background:var(--orange);color:#fff;font-family:'Montserrat',sans-serif;font-size:.55rem;font-weight:800;padding:.18rem .55rem;border-radius:10px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.4rem;}
+
+/* Location map */
+.map-wrap{border-radius:10px;overflow:hidden;border:1.5px solid var(--border);position:relative;}
+.map-frame{width:100%;height:360px;border:none;display:block;}
+.map-overlay-badge{position:absolute;bottom:1rem;left:1rem;background:rgba(0,0,0,.75);color:#fff;font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:700;padding:.45rem .9rem;border-radius:4px;display:flex;align-items:center;gap:.4rem;backdrop-filter:blur(4px);}
+.loc-details{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1rem;}
+.loc-item{display:flex;align-items:flex-start;gap:.6rem;font-size:.83rem;color:var(--gray-dark);}
+.loc-icon{font-size:1rem;flex-shrink:0;margin-top:.05rem;}
+.loc-text strong{display:block;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:800;color:var(--black);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.15rem;}
+
+/* Subdivision map */
+.subdiv-wrap{border-radius:10px;overflow:hidden;border:1.5px solid var(--border);background:#f9f6f0;}
+.subdiv-header{background:var(--black);padding:.9rem 1.2rem;display:flex;align-items:center;justify-content:space-between;}
+.subdiv-title{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:800;color:#fff;letter-spacing:.1em;text-transform:uppercase;}
+.subdiv-legend{display:flex;gap:1rem;}
+.legend-item{display:flex;align-items:center;gap:.35rem;font-size:.62rem;color:rgba(255,255,255,.6);}
+.legend-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0;}
+.subdiv-svg-wrap{padding:1.5rem;background:#f9f6f0;overflow-x:auto;}
+.subdiv-note{padding:.8rem 1.2rem;background:var(--gray-light);font-size:.72rem;color:var(--gray);display:flex;align-items:center;gap:.5rem;}
+
+/* ── RIGHT STICKY PANEL ── */
+.prod-sticky{position:sticky;top:120px;}
+.sticky-card{background:var(--white);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.08);}
+.sticky-top{background:var(--green);padding:1.4rem 1.6rem;}
+.sticky-price{font-family:'Montserrat',sans-serif;font-size:1.9rem;font-weight:900;color:#fff;line-height:1;}
+.sticky-price-sub{font-size:.72rem;color:rgba(255,255,255,.65);margin-top:.2rem;}
+.sticky-avail{display:flex;align-items:center;gap:.5rem;margin-top:.8rem;}
+.avail-dot{width:8px;height:8px;border-radius:50%;background:#7CFC00;animation:blink 2s infinite;}
+.avail-text{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.85);}
+.sticky-body{padding:1.4rem 1.6rem;}
+.sticky-specs{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.2rem;}
+.ss-item{background:var(--gray-light);border-radius:6px;padding:.7rem .8rem;}
+.ss-val{font-family:'Montserrat',sans-serif;font-size:.92rem;font-weight:800;color:var(--black);}
+.ss-key{font-size:.6rem;color:var(--gray);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-top:.15rem;}
+.sticky-divider{height:1px;background:var(--border);margin:.9rem 0;}
+.sticky-label{font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);margin-bottom:.7rem;}
+.form-group{margin-bottom:.85rem;}
+.form-group input,.form-group select{width:100%;padding:.72rem .9rem;border:1.5px solid var(--border);border-radius:6px;font-family:'Open Sans',sans-serif;font-size:.85rem;color:var(--black);outline:none;transition:border-color .2s;background:var(--white);appearance:none;}
+.form-group input:focus,.form-group select:focus{border-color:var(--orange);}
+.cta-primary{width:100%;background:var(--orange);color:#fff;border:none;padding:1rem;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:.88rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s;margin-bottom:.6rem;}
+.cta-primary:hover{background:var(--orange-dark);}
+.cta-wa{width:100%;background:#25D366;color:#fff;border:none;padding:.85rem;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;transition:background .2s;display:flex;align-items:center;justify-content:center;gap:.5rem;text-decoration:none;}
+.cta-wa:hover{background:#1da851;}
+.cta-call{width:100%;background:none;color:var(--green);border:1.5px solid var(--green);padding:.75rem;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:.5rem;text-decoration:none;margin-top:.5rem;}
+.cta-call:hover{background:var(--green);color:#fff;}
+.sticky-trust{margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:.5rem;}
+.trust-item{display:flex;align-items:center;gap:.5rem;font-size:.73rem;color:var(--gray-dark);}
+.trust-icon{color:var(--green);font-size:.85rem;flex-shrink:0;}
+
+/* ── NEARBY / SIMILAR ── */
+.similar-section{padding:3.5rem 5rem;background:var(--gray-light);}
+.sec-eyebrow{font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:.6rem;display:flex;align-items:center;gap:.6rem;}
+.sec-eyebrow::before{content:'';width:28px;height:3px;background:var(--orange);display:inline-block;}
+.sec-title{font-family:'Montserrat',sans-serif;font-size:clamp(1.6rem,2.8vw,2.2rem);font-weight:900;line-height:1.18;color:var(--black);margin-bottom:2rem;}
+.sec-title span{color:var(--green);}
+.similar-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}
+.sim-card{background:#fff;border-radius:10px;overflow:hidden;border:1px solid var(--border);display:flex;transition:transform .3s,box-shadow .3s;cursor:pointer;}
+.sim-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.1);}
+.sim-img{width:140px;flex-shrink:0;overflow:hidden;}
+.sim-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+.sim-card:hover .sim-img img{transform:scale(1.08);}
+.sim-body{padding:1.2rem;flex:1;}
+.sim-loc{font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:.3rem;}
+.sim-name{font-family:'Montserrat',sans-serif;font-size:.92rem;font-weight:900;color:var(--black);margin-bottom:.5rem;line-height:1.25;}
+.sim-feats{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.8rem;}
+.sim-feat{background:var(--gray-light);font-size:.62rem;font-family:'Montserrat',sans-serif;font-weight:600;color:#555;padding:.18rem .55rem;border-radius:10px;}
+.sim-footer{display:flex;align-items:center;justify-content:space-between;}
+.sim-price{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:900;color:var(--green);}
+.sim-cta{background:var(--orange);color:#fff;border:none;padding:.4rem .95rem;border-radius:3px;font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;cursor:pointer;transition:background .2s;text-decoration:none;}
+.sim-cta:hover{background:var(--orange-dark);}
+
+/* ── FOOTER ── */
+footer{background:var(--black);padding:4.5rem 5rem 2rem;}
+.f-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:2rem;}
+.f-logo-wrap{margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem;}
+.f-logo-tri{width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-bottom:18px solid var(--green);}
+.f-logo-text{font-family:'Montserrat',sans-serif;font-size:1.35rem;font-weight:900;}
+.f-logo-text .ardhi{color:var(--white);}.f-logo-text .soko{color:var(--orange);}
+.f-tagline{font-size:.62rem;color:rgba(255,255,255,.3);letter-spacing:.08em;margin-top:-2px;}
+.f-about{font-size:.82rem;color:rgba(255,255,255,.35);line-height:1.75;margin-bottom:1.5rem;}
+.f-socials{display:flex;gap:.5rem;}
+.fsoc{width:34px;height:34px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:.82rem;color:rgba(255,255,255,.4);cursor:pointer;border-radius:3px;transition:all .2s;}
+.fsoc:hover{background:var(--orange);border-color:var(--orange);color:var(--white);}
+.f-col h5{font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:1.2rem;}
+.f-links{list-style:none;}
+.f-links li{margin-bottom:.6rem;}
+.f-links a{font-size:.83rem;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}
+.f-links a:hover{color:var(--white);}
+.f-contact{list-style:none;}
+.f-contact li{display:flex;align-items:flex-start;gap:.65rem;margin-bottom:.8rem;font-size:.83rem;color:rgba(255,255,255,.35);}
+.f-bottom{display:flex;justify-content:space-between;align-items:center;font-size:.74rem;color:rgba(255,255,255,.2);font-family:'Montserrat',sans-serif;font-weight:500;}
+
+/* ── WA FLOAT ── */
+.wa-btn{position:fixed;bottom:1.8rem;right:1.8rem;z-index:999;background:#25D366;color:var(--white);width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.5);transition:transform .2s;}
+.wa-btn:hover{transform:scale(1.1);}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--green);color:#fff;font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:700;padding:.85rem 1.8rem;border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,.2);transition:transform .3s,opacity .3s;opacity:0;z-index:9999;}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .top-bar,.page-hero,footer{padding-left:2rem;padding-right:2rem;}
+  nav{padding:.7rem 2rem;}
+  .pm-desktop{padding:0 2rem;}
+  .pm-link{padding:.6rem .9rem;font-size:.68rem;}
+  .product-layout{grid-template-columns:1fr;padding:2.5rem 2rem;}
+  .prod-sticky{position:static;}
+  .specs-grid{grid-template-columns:repeat(3,1fr);}
+  .payment-grid{grid-template-columns:repeat(3,1fr);}
+  .similar-section{padding:2.5rem 2rem;}
+  .similar-grid{grid-template-columns:1fr;}
+  .f-grid{grid-template-columns:1fr 1fr;gap:2rem;}
+}
+@media(max-width:680px){
+  .top-bar{padding:.3rem 1rem;}
+  .top-bar-left a:last-child{display:none;}
+  nav{padding:.6rem 1rem;}
+  .nav-search{margin-left:auto;background:transparent;border:none;}
+  .nav-search-input{width:0;padding:0;opacity:0;}
+  .nav-search-input.open{width:140px;padding:.4rem .75rem;opacity:1;}
+  .nav-search-btn{background:transparent;color:var(--orange);padding:.4rem;font-size:1.1rem;}
+  .pm-desktop{display:none;}
+  .pm-mobile{display:grid;}
+  .page-hero{padding:2rem 1.2rem;}
+  .gallery-main{height:260px;}
+  .g-thumb{width:72px;height:50px;}
+  .product-layout{padding:1.5rem 1.2rem;gap:1.8rem;}
+  .price-bar{flex-direction:column;align-items:flex-start;gap:.6rem;}
+  .price-meta{text-align:left;}
+  .specs-grid{grid-template-columns:repeat(2,1fr);}
+  .features-grid{grid-template-columns:1fr;}
+  .payment-grid{grid-template-columns:1fr;}
+  .loc-details{grid-template-columns:1fr;}
+  .similar-section{padding:2rem 1.2rem;}
+  .sim-card{flex-direction:column;}
+  .sim-img{width:100%;height:180px;}
+  .f-grid{grid-template-columns:1fr;}
+  footer{padding:3rem 1.2rem 2rem;}
+}
+
+
+/* ── MOBILE OVERFLOW FIX ── */
+@media(max-width:680px){
+  html{overflow-x:hidden;}
+  body{overflow-x:hidden;max-width:100vw;width:100%;}
+  *{box-sizing:border-box;word-wrap:break-word;overflow-wrap:break-word;max-width:100%;}
+  img,iframe,svg,table{max-width:100% !important;}
+
+  /* Nav */
+  nav{padding:.6rem 1rem;width:100%;}
+  .nav-search{background:transparent;border:none;}
+  .nav-search-input{width:0;padding:0;opacity:0;}
+  .nav-search-btn{background:transparent;color:var(--orange);padding:.4rem;font-size:1.1rem;}
+
+  /* Page menu */
+  .pm-desktop{display:none;}
+  .pm-mobile{display:grid;}
+
+  /* Page hero */
+  .page-hero{padding:1.5rem 1rem;}
+  .page-hero h1{font-size:1.5rem;}
+  .page-hero p{font-size:.85rem;}
+
+  /* Gallery */
+  .gallery-wrap{width:100%;overflow:hidden;}
+  .gallery-main{height:220px;width:100%;}
+  .gallery-thumbs{width:100%;}
+  .g-thumb{width:60px;height:42px;flex-shrink:0;}
+
+  /* Product layout */
+  .product-layout{
+    display:block;
+    padding:1rem;
+    width:100%;
+    overflow-x:hidden;
+  }
+  .prod-left{width:100%;overflow-x:hidden;}
+  .prod-section{width:100%;overflow-x:hidden;}
+  .prod-sticky{position:static;width:100%;}
+
+  /* Price bar */
+  .price-bar{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:.5rem;
+    padding:1rem;
+    width:100%;
+  }
+  .price-meta{text-align:left;}
+  .price-main{font-size:1.6rem;}
+
+  /* Description text */
+  .prod-desc{font-size:.88rem;line-height:1.7;width:100%;}
+  .prod-desc p{width:100%;}
+
+  /* Grids */
+  .specs-grid{grid-template-columns:1fr 1fr;width:100%;}
+  .spec-card{min-width:0;width:100%;}
+  .features-grid{grid-template-columns:1fr;width:100%;}
+  .payment-grid{grid-template-columns:1fr;width:100%;}
+  .loc-details{grid-template-columns:1fr;width:100%;}
+
+  /* Map */
+  .map-wrap{width:100%;overflow:hidden;}
+  .map-frame{height:220px;width:100% !important;}
+
+  /* Subdivision */
+  .subdiv-wrap{width:100%;overflow:hidden;}
+  .subdiv-header{flex-direction:column;align-items:flex-start;gap:.4rem;padding:.7rem 1rem;}
+  .subdiv-title{font-size:.62rem;}
+  .subdiv-legend{flex-wrap:wrap;gap:.3rem;}
+  .subdiv-svg-wrap{padding:.5rem;overflow-x:auto;width:100%;}
+
+  /* Sticky enquiry card */
+  .sticky-card{width:100%;}
+  .sticky-specs{grid-template-columns:1fr 1fr;}
+  .sticky-top{padding:1rem 1.2rem;}
+  .sticky-body{padding:1rem 1.2rem;}
+
+  /* Similar */
+  .similar-section{padding:1.5rem 1rem;}
+  .similar-grid{grid-template-columns:1fr;}
+  .sim-card{flex-direction:column;width:100%;}
+  .sim-img{width:100%;height:160px;}
+  .sim-body{padding:1rem;}
+
+  /* Footer */
+  footer{padding:2rem 1rem 1.5rem;width:100%;}
+  .f-grid{grid-template-columns:1fr;}
+  .f-bottom{flex-direction:column;gap:.5rem;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar-left">
+    <a href="tel:+254711465650">&#128222; +254 711 465 650</a>
+    <a href="/cdn-cgi/l/email-protection#0f676a6363604f6e7d6b67667c606460216c6021646a">&#9993;&#65039; <span class="__cf_email__" data-cfemail="f39b969f9f9cb39281979b9a809c989cdd909cdd9896">[email&#160;protected]</span></a>
+  </div>
+  <div class="top-bar-right">
+    <a href="https://facebook.com" target="_blank" class="tb-social" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+    <a href="https://instagram.com" target="_blank" class="tb-social" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+    <a href="https://twitter.com" target="_blank" class="tb-social" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="https://wa.me/254711465650" target="_blank" class="tb-social" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-triangle"></div>
+    <div>
+      <div class="logo-text"><span class="ardhi">Ardhi</span><span class="soko">Soko</span></div>
+      <div class="logo-tagline">Premium Living, Smart Investing</div>
+    </div>
+  </a>
+  <div class="nav-search">
+    <input type="text" class="nav-search-input" placeholder="Search properties, locations...">
+    <button class="nav-search-btn">&#128269;</button>
+  </div>
+</nav>
+
+<!-- PAGE MENU -->
+<div class="page-menu">
+  <div class="pm-desktop">
+    <a href="index.html" class="pm-link">Home</a>
+    <div class="pm-dropdown">
+      <a href="properties.html" class="pm-link pm-active">Properties &#9660;</a>
+      <div class="pm-drop-panel">
+        <a href="malindi.html" class="pm-drop-link">&#127968; Malindi Ocean View Acres</a>
+        <a href="konza.html" class="pm-drop-link">&#127963; Konza Technopolis Plots</a>
+        <a href="kamakis.html" class="pm-drop-link" style="background:var(--orange);color:#fff;">&#127748; Kamakis Urban Residences</a>
+      </div>
+    </div>
+    <a href="about.html" class="pm-link">About Us</a>
+    <a href="blog.html" class="pm-link">Blog</a>
+    <a href="index.html#testimonials" class="pm-link">Testimonials</a>
+    <a href="#" class="pm-link">Media</a>
+  </div>
+  <div class="pm-mobile">
+    <a href="index.html" class="pm-m-link">Home</a>
+    <a href="properties.html" class="pm-m-link pm-active">Properties</a>
+    <a href="about.html" class="pm-m-link">About Us</a>
+    <a href="blog.html" class="pm-m-link">Blog</a>
+    <a href="index.html#testimonials" class="pm-m-link">Testimonials</a>
+    <a href="#" class="pm-m-link">Media</a>
+  </div>
+</div>
+
+<!-- PAGE HERO / BREADCRUMB -->
+<div class="page-hero">
+  <div class="breadcrumb">
+    <a href="index.html">Home</a> ›
+    <a href="properties.html">Properties</a> ›
+    <span>Konza Technopolis Plots</span>
+  </div>
+  <div class="page-hero-eyebrow">Land for Sale &mdash; Machakos County</div>
+  <h1>Konza <span>Technopolis Plots</span></h1>
+  <p>1/8-acre plots inside Kenya's Silicon Savannah. SGR station, government offices, and data centres nearby. Exceptional ROI potential.</p>
+</div>
+
+<!-- PHOTO GALLERY -->
+<div class="gallery-wrap">
+  <div class="gallery-main" id="gallery-main" onclick="openLightbox()">
+    <img id="gallery-img" src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1400&q=85" alt="Malindi Ocean View Acres">
+    <div class="gallery-overlay"></div>
+    <span class="gallery-badge">Land for Sale</span>
+    <span class="gallery-status">Selling Fast</span>
+    <div class="gallery-counter" id="gallery-counter">&#128247; 1 / 5</div>
+    <div class="gallery-arrows">
+      <button class="g-arrow" onclick="event.stopPropagation();gPrev()">&#8592;</button>
+      <button class="g-arrow" onclick="event.stopPropagation();gNext()">&#8594;</button>
+    </div>
+  </div>
+  <div class="gallery-thumbs" id="gallery-thumbs">
+    <div class="g-thumb active" onclick="gGoto(0)"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=300&q=75" alt=""></div>
+    <div class="g-thumb" onclick="gGoto(1)"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=300&q=75" alt=""></div>
+    <div class="g-thumb" onclick="gGoto(2)"><img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=300&q=75" alt=""></div>
+    <div class="g-thumb" onclick="gGoto(3)"><img src="https://images.unsplash.com/photo-1503751071777-d2918b21bbd9?w=300&q=75" alt=""></div>
+    <div class="g-thumb" onclick="gGoto(4)"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=300&q=75" alt=""></div>
+  </div>
+</div>
+
+<!-- MAIN PRODUCT LAYOUT -->
+<div class="product-layout">
+
+  <!-- LEFT: DETAILED INFO -->
+  <div class="prod-left">
+
+    <!-- Price bar -->
+    <div class="price-bar">
+      <div>
+        <div class="price-main">KES 450K</div>
+        <div class="price-sub">per 1/8-acre plot &mdash; flexible payment plans available</div>
+      </div>
+      <div class="price-meta">
+        <div class="price-badge">🔥 Selling Fast</div>
+        <div class="price-avail">Limited plots remaining</div>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="prod-section">
+      <div class="prod-section-title">About This Property</div>
+      <div class="prod-desc">
+        <p>Kamakis Urban Residences brings contemporary apartment living to Kamakis, one of Nairobi's fastest-growing satellite corridors. Choose from 1, 2, or 3-bedroom units designed with modern finishes, functional layouts, and a suite of lifestyle amenities — all at an accessible off-plan price.</p>
+        <p>Located along the busy Kamakis–Eastern Bypass interchange, residents enjoy seamless access to Nairobi's CBD, Thika Superhighway, and the Eastern Bypass. The area is surrounded by established schools, shopping centres, hospitals, and a booming commercial scene that keeps rental demand consistently high.</p>
+        <p>Buy off-plan now and benefit from <strong>below-market entry pricing</strong> and flexible instalment plans. Units are expected to appreciate significantly upon completion, making this both an excellent home and a sound investment.</p>
+      </div>
+    </div>
+
+    <!-- Key Specs -->
+    <div class="prod-section">
+      <div class="prod-section-title">Key Details</div>
+      <div class="specs-grid">
+        <div class="spec-card">
+          <div class="spec-val">1/8 Acre</div>
+          <div class="spec-key">Plot Size</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-val">KES 450K</div>
+          <div class="spec-key">Price / Plot</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-val">Ready</div>
+          <div class="spec-key">Title Deed</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-val">Tarmac</div>
+          <div class="spec-key">Road Access</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-val">Borehole</div>
+          <div class="spec-key">Water Supply</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-val">8 km</div>
+          <div class="spec-key">From CBD</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <div class="prod-section">
+      <div class="prod-section-title">Property Features</div>
+      <div class="features-grid">
+        <div class="feat-item"><div class="feat-icon">✓</div> Modern 1, 2 &amp; 3 bed units</div>
+        <div class="feat-item"><div class="feat-icon">✓</div> Ample parking (per unit)</div>
+        <div class="feat-item"><div class="feat-icon">✓</div> Fully equipped gym</div>
+        <div class="feat-item"><div class="feat-icon">✓</div> Rooftop lounge &amp; terrace</div>
+        <div class="feat-item"><div class="feat-icon">✓</div> 24/7 security &amp; CCTV</div>
+        <div class="feat-item"><div class="feat-icon">✓</div> Borehole + NWSC water</div>
+        <div class="feat-item"><div class="feat-icon">✓</div> Backup generator</div>
+        <div class="feat-item"><div class="feat-icon">✓</div> Near Eastern Bypass</div>
+        <div class="feat-item"><div class="feat-icon">✓</div> High rental yield area</div>
+        <div class="feat-item"><div class="feat-icon">✓</div> Off-plan instalment plans</div>
+      </div>
+    </div>
+
+    <!-- Payment Plans -->
+    <div class="prod-section">
+      <div class="prod-section-title">Flexible Payment Plans</div>
+      <div class="payment-grid">
+        <div class="pay-card">
+          <div class="pay-label">Option A</div>
+          <div class="pay-pct">100%</div>
+          <div class="pay-detail">Full off-plan cash<br>Best pricing available</div>
+        </div>
+        <div class="pay-card featured">
+          <div class="pay-tag">Most Popular</div>
+          <div class="pay-label">Option B</div>
+          <div class="pay-pct">30%</div>
+          <div class="pay-detail">Deposit + balance<br>in 24 instalments</div>
+        </div>
+        <div class="pay-card">
+          <div class="pay-label">Option C</div>
+          <div class="pay-pct">15%</div>
+          <div class="pay-detail">Deposit + balance<br>over 36 months</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Location Map -->
+    <div class="prod-section" id="location">
+      <div class="prod-section-title">Location</div>
+      <div class="map-wrap">
+        <iframe
+          class="map-frame"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955!2d37.0693!3d-2.7456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f16b5d4b0c9b3%3A0x4a2b7a9c34c6e8e1!2sKamakis%2C%20Ruiru!5e0!3m2!1sen!2sus!4v1699000000002!5m2!1sen!2sus"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <div class="map-overlay-badge">&#128205; Konza Technopolis, Machakos County, Kenya</div>
+      </div>
+      <div class="loc-details">
+        <div class="loc-item">
+          <div class="loc-icon">🚂</div>
+          <div class="loc-text"><strong>SGR Station</strong>5 km to Konza SGR Station</div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon">🏙️</div>
+          <div class="loc-text"><strong>Nairobi</strong>70 km to Nairobi CBD</div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon">🏗️</div>
+          <div class="loc-text"><strong>Smart City</strong>Adjacent to Konza Technopolis Zone</div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon">🚗</div>
+          <div class="loc-text"><strong>Highway</strong>On Nairobi–Mombasa Highway A109</div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon">🏥</div>
+          <div class="loc-text"><strong>Hospital</strong>15 km to Sultan Hamud Hospital</div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon">🏫</div>
+          <div class="loc-text"><strong>University</strong>Konza University campus planned</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subdivision Map -->
+    <div class="prod-section" id="subdivision">
+      <div class="prod-section-title">Subdivision Map</div>
+      <div class="subdiv-wrap">
+        <div class="subdiv-header">
+          <div class="subdiv-title">&#128205; Konza Technopolis Plots &mdash; Plot Layout</div>
+          <div class="subdiv-legend">
+            <div class="legend-item"><div class="legend-dot" style="background:#4CAF50"></div> Available</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#F5921E"></div> Reserved</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#E53935"></div> Sold</div>
+          </div>
+        </div>
+        <div class="subdiv-svg-wrap">
+          <svg viewBox="0 0 680 420" width="100%" style="min-width:420px;font-family:'Montserrat',sans-serif;">
+            <rect width="680" height="420" fill="#f0f4f8"/>
+
+            <!-- Ground floor label -->
+            <rect x="20" y="20" width="640" height="28" fill="#2E7D1F" rx="3"/>
+            <text x="340" y="38" text-anchor="middle" font-size="11" fill="#fff" font-weight="800" letter-spacing="2">KAMAKIS URBAN RESIDENCES — TYPICAL FLOOR PLAN</text>
+
+            <!-- Corridor horizontal -->
+            <rect x="20" y="200" width="640" height="20" fill="#c8d8e8"/>
+            <text x="340" y="213" text-anchor="middle" font-size="8" fill="#4a6080" font-weight="700" letter-spacing="1">MAIN CORRIDOR</text>
+
+            <!-- Units North side (top) — 3 x 1-bed, 2 x 2-bed, 1 x 3-bed -->
+            <!-- 1-Bed A -->
+            <rect x="25" y="58" width="130" height="132" fill="#4CAF50" opacity=".18" stroke="#4CAF50" stroke-width="1.5" rx="3"/>
+            <text x="90" y="108" text-anchor="middle" font-size="11" fill="#2E7D1F" font-weight="800">UNIT A1</text>
+            <text x="90" y="123" text-anchor="middle" font-size="9" fill="#2E7D1F">1 Bedroom</text>
+            <text x="90" y="136" text-anchor="middle" font-size="8" fill="#43A047" font-weight="700">KES 3.2M</text>
+            <text x="90" y="149" text-anchor="middle" font-size="8" fill="#888">42 m²</text>
+            <!-- living room box -->
+            <rect x="32" y="62" width="116" height="55" fill="rgba(46,125,31,.06)" stroke="#4CAF50" stroke-width="1" rx="2"/>
+            <text x="90" y="93" text-anchor="middle" font-size="7" fill="#666">Living / Dining</text>
+            <!-- bed box -->
+            <rect x="32" y="120" width="60" height="40" fill="rgba(46,125,31,.06)" stroke="#4CAF50" stroke-width="1" rx="2"/>
+            <text x="62" y="144" text-anchor="middle" font-size="7" fill="#666">Bedroom</text>
+            <!-- bath box -->
+            <rect x="95" y="120" width="53" height="40" fill="rgba(46,125,31,.06)" stroke="#4CAF50" stroke-width="1" rx="2"/>
+            <text x="121" y="144" text-anchor="middle" font-size="7" fill="#666">Bath/Kit</text>
+
+            <!-- 1-Bed B -->
+            <rect x="163" y="58" width="130" height="132" fill="#4CAF50" opacity=".18" stroke="#4CAF50" stroke-width="1.5" rx="3"/>
+            <text x="228" y="108" text-anchor="middle" font-size="11" fill="#2E7D1F" font-weight="800">UNIT A2</text>
+            <text x="228" y="123" text-anchor="middle" font-size="9" fill="#2E7D1F">1 Bedroom</text>
+            <text x="228" y="136" text-anchor="middle" font-size="8" fill="#43A047" font-weight="700">KES 3.2M</text>
+            <text x="228" y="149" text-anchor="middle" font-size="8" fill="#888">42 m²</text>
+            <rect x="170" y="62" width="116" height="55" fill="rgba(46,125,31,.06)" stroke="#4CAF50" stroke-width="1" rx="2"/>
+            <text x="228" y="93" text-anchor="middle" font-size="7" fill="#666">Living / Dining</text>
+            <rect x="170" y="120" width="60" height="40" fill="rgba(46,125,31,.06)" stroke="#4CAF50" stroke-width="1" rx="2"/>
+            <text x="200" y="144" text-anchor="middle" font-size="7" fill="#666">Bedroom</text>
+            <rect x="233" y="120" width="53" height="40" fill="rgba(46,125,31,.06)" stroke="#4CAF50" stroke-width="1" rx="2"/>
+            <text x="259" y="144" text-anchor="middle" font-size="7" fill="#666">Bath/Kit</text>
+
+            <!-- 2-Bed A -->
+            <rect x="301" y="58" width="168" height="132" fill="#F5921E" opacity=".18" stroke="#F5921E" stroke-width="1.5" rx="3"/>
+            <text x="385" y="100" text-anchor="middle" font-size="11" fill="#c47518" font-weight="800">UNIT A3</text>
+            <text x="385" y="115" text-anchor="middle" font-size="9" fill="#c47518">2 Bedroom</text>
+            <text x="385" y="128" text-anchor="middle" font-size="8" fill="#E65100" font-weight="700">KES 4.8M</text>
+            <text x="385" y="141" text-anchor="middle" font-size="8" fill="#888">65 m²</text>
+            <rect x="308" y="62" width="154" height="45" fill="rgba(245,146,30,.06)" stroke="#F5921E" stroke-width="1" rx="2"/>
+            <text x="385" y="88" text-anchor="middle" font-size="7" fill="#666">Open Living / Dining / Kitchen</text>
+            <rect x="308" y="110" width="72" height="38" fill="rgba(245,146,30,.06)" stroke="#F5921E" stroke-width="1" rx="2"/>
+            <text x="344" y="133" text-anchor="middle" font-size="7" fill="#666">Master Bed</text>
+            <rect x="383" y="110" width="79" height="38" fill="rgba(245,146,30,.06)" stroke="#F5921E" stroke-width="1" rx="2"/>
+            <text x="422" y="133" text-anchor="middle" font-size="7" fill="#666">Bed 2 / Bath</text>
+
+            <!-- 3-Bed (premium) -->
+            <rect x="477" y="58" width="183" height="132" fill="#1565C0" opacity=".12" stroke="#1565C0" stroke-width="1.5" rx="3"/>
+            <text x="568" y="100" text-anchor="middle" font-size="11" fill="#0d47a1" font-weight="800">UNIT A4</text>
+            <text x="568" y="115" text-anchor="middle" font-size="9" fill="#0d47a1">3 Bedroom</text>
+            <text x="568" y="128" text-anchor="middle" font-size="8" fill="#1565C0" font-weight="700">KES 6.5M</text>
+            <text x="568" y="141" text-anchor="middle" font-size="8" fill="#888">92 m²</text>
+            <rect x="484" y="62" width="169" height="40" fill="rgba(21,101,192,.06)" stroke="#1565C0" stroke-width="1" rx="2"/>
+            <text x="568" y="86" text-anchor="middle" font-size="7" fill="#666">Open Living / Dining / Kitchen</text>
+            <rect x="484" y="105" width="53" height="38" fill="rgba(21,101,192,.06)" stroke="#1565C0" stroke-width="1" rx="2"/>
+            <text x="510" y="128" text-anchor="middle" font-size="7" fill="#666">Master</text>
+            <rect x="540" y="105" width="53" height="38" fill="rgba(21,101,192,.06)" stroke="#1565C0" stroke-width="1" rx="2"/>
+            <text x="566" y="128" text-anchor="middle" font-size="7" fill="#666">Bed 2</text>
+            <rect x="596" y="105" width="57" height="38" fill="rgba(21,101,192,.06)" stroke="#1565C0" stroke-width="1" rx="2"/>
+            <text x="624" y="128" text-anchor="middle" font-size="7" fill="#666">Bed 3</text>
+
+            <!-- Units South side (below corridor) — mirror -->
+            <!-- B1 1-Bed -->
+            <rect x="25" y="228" width="130" height="132" fill="#4CAF50" opacity=".18" stroke="#4CAF50" stroke-width="1.5" rx="3"/>
+            <text x="90" y="278" text-anchor="middle" font-size="11" fill="#2E7D1F" font-weight="800">UNIT B1</text>
+            <text x="90" y="293" text-anchor="middle" font-size="9" fill="#2E7D1F">1 Bedroom</text>
+            <text x="90" y="306" text-anchor="middle" font-size="8" fill="#43A047" font-weight="700">KES 3.2M</text>
+            <text x="90" y="319" text-anchor="middle" font-size="8" fill="#888">42 m²</text>
+
+            <!-- B2 1-Bed SOLD -->
+            <rect x="163" y="228" width="130" height="132" fill="#E53935" opacity=".15" stroke="#E53935" stroke-width="1.5" rx="3"/>
+            <text x="228" y="278" text-anchor="middle" font-size="11" fill="#b71c1c" font-weight="800">UNIT B2</text>
+            <text x="228" y="293" text-anchor="middle" font-size="9" fill="#b71c1c">1 Bedroom</text>
+            <text x="228" y="306" text-anchor="middle" font-size="8" fill="#E53935" font-weight="700">SOLD</text>
+
+            <!-- B3 2-Bed Reserved -->
+            <rect x="301" y="228" width="168" height="132" fill="#F5921E" opacity=".18" stroke="#F5921E" stroke-width="1.5" rx="3"/>
+            <text x="385" y="278" text-anchor="middle" font-size="11" fill="#c47518" font-weight="800">UNIT B3</text>
+            <text x="385" y="293" text-anchor="middle" font-size="9" fill="#c47518">2 Bedroom</text>
+            <text x="385" y="306" text-anchor="middle" font-size="8" fill="#E65100" font-weight="700">RESERVED</text>
+
+            <!-- B4 3-Bed Available -->
+            <rect x="477" y="228" width="183" height="132" fill="#1565C0" opacity=".12" stroke="#1565C0" stroke-width="1.5" rx="3"/>
+            <text x="568" y="278" text-anchor="middle" font-size="11" fill="#0d47a1" font-weight="800">UNIT B4</text>
+            <text x="568" y="293" text-anchor="middle" font-size="9" fill="#0d47a1">3 Bedroom</text>
+            <text x="568" y="306" text-anchor="middle" font-size="8" fill="#1565C0" font-weight="700">KES 6.5M</text>
+
+            <!-- Legend -->
+            <g transform="translate(25,378)">
+              <rect x="0" y="0" width="10" height="10" fill="#4CAF50" opacity=".5" rx="2"/>
+              <text x="14" y="9" font-size="8" fill="#555">1-Bed (42m²)</text>
+              <rect x="90" y="0" width="10" height="10" fill="#F5921E" opacity=".5" rx="2"/>
+              <text x="104" y="9" font-size="8" fill="#555">2-Bed (65m²)</text>
+              <rect x="190" y="0" width="10" height="10" fill="#1565C0" opacity=".4" rx="2"/>
+              <text x="204" y="9" font-size="8" fill="#555">3-Bed (92m²)</text>
+              <rect x="290" y="0" width="10" height="10" fill="#4CAF50" opacity=".4" rx="2"/>
+              <text x="304" y="9" font-size="8" fill="#43A047">Available</text>
+              <rect x="370" y="0" width="10" height="10" fill="#F5921E" opacity=".4" rx="2"/>
+              <text x="384" y="9" font-size="8" fill="#E65100">Reserved</text>
+              <rect x="450" y="0" width="10" height="10" fill="#E53935" opacity=".4" rx="2"/>
+              <text x="464" y="9" font-size="8" fill="#E53935">Sold</text>
+            </g>
+          </svg>
+        
+          <PLACEHOLDER width="100%" style="min-width:420px;font-family:'Montserrat',sans-serif;">
+            <!-- Background -->
+            <rect width="680" height="420" fill="#f9f6f0"/>
+
+            <!-- Road - Main access road horizontal -->
+            <rect x="0" y="195" width="680" height="30" fill="#c8b89a" rx="0"/>
+            <text x="340" y="214" text-anchor="middle" font-size="9" fill="#6b5a44" font-weight="700" letter-spacing="2">MAIN ACCESS ROAD</text>
+
+            <!-- Road - vertical connector left -->
+            <rect x="60" y="0" width="22" height="420" fill="#c8b89a"/>
+            <!-- Road - vertical connector right -->
+            <rect x="598" y="0" width="22" height="420" fill="#c8b89a"/>
+            <!-- Road - vertical mid -->
+            <rect x="329" y="0" width="22" height="420" fill="#c8b89a"/>
+
+            <!-- UPPER SECTION — 8 plots -->
+            <!-- Row 1 Top — left of center road -->
+            <rect x="90" y="20" width="112" height="165" fill="#4CAF50" opacity=".22" stroke="#4CAF50" stroke-width="1.5" rx="2"/>
+            <text x="146" y="92" text-anchor="middle" font-size="10" fill="#2E7D1F" font-weight="800">A1</text>
+            <text x="146" y="107" text-anchor="middle" font-size="8" fill="#2E7D1F">1 Acre</text>
+            <text x="146" y="120" text-anchor="middle" font-size="8" fill="#43A047" font-weight="700">AVAILABLE</text>
+
+            <rect x="210" y="20" width="112" height="165" fill="#4CAF50" opacity=".22" stroke="#4CAF50" stroke-width="1.5" rx="2"/>
+            <text x="266" y="92" text-anchor="middle" font-size="10" fill="#2E7D1F" font-weight="800">A2</text>
+            <text x="266" y="107" text-anchor="middle" font-size="8" fill="#2E7D1F">1 Acre</text>
+            <text x="266" y="120" text-anchor="middle" font-size="8" fill="#43A047" font-weight="700">AVAILABLE</text>
+
+            <!-- Row 1 Top — right of center road -->
+            <rect x="358" y="20" width="112" height="165" fill="#F5921E" opacity=".22" stroke="#F5921E" stroke-width="1.5" rx="2"/>
+            <text x="414" y="92" text-anchor="middle" font-size="10" fill="#c47518" font-weight="800">A3</text>
+            <text x="414" y="107" text-anchor="middle" font-size="8" fill="#c47518">1 Acre</text>
+            <text x="414" y="120" text-anchor="middle" font-size="8" fill="#E65100" font-weight="700">RESERVED</text>
+
+            <rect x="478" y="20" width="112" height="165" fill="#E53935" opacity=".18" stroke="#E53935" stroke-width="1.5" rx="2"/>
+            <text x="534" y="92" text-anchor="middle" font-size="10" fill="#b71c1c" font-weight="800">A4</text>
+            <text x="534" y="107" text-anchor="middle" font-size="8" fill="#b71c1c">1 Acre</text>
+            <text x="534" y="120" text-anchor="middle" font-size="8" fill="#E53935" font-weight="700">SOLD</text>
+
+            <!-- LOWER SECTION — 8 plots -->
+            <rect x="90" y="232" width="112" height="165" fill="#E53935" opacity=".18" stroke="#E53935" stroke-width="1.5" rx="2"/>
+            <text x="146" y="304" text-anchor="middle" font-size="10" fill="#b71c1c" font-weight="800">B1</text>
+            <text x="146" y="319" text-anchor="middle" font-size="8" fill="#b71c1c">1 Acre</text>
+            <text x="146" y="332" text-anchor="middle" font-size="8" fill="#E53935" font-weight="700">SOLD</text>
+
+            <rect x="210" y="232" width="112" height="165" fill="#4CAF50" opacity=".22" stroke="#4CAF50" stroke-width="1.5" rx="2"/>
+            <text x="266" y="304" text-anchor="middle" font-size="10" fill="#2E7D1F" font-weight="800">B2</text>
+            <text x="266" y="319" text-anchor="middle" font-size="8" fill="#2E7D1F">1 Acre</text>
+            <text x="266" y="332" text-anchor="middle" font-size="8" fill="#43A047" font-weight="700">AVAILABLE</text>
+
+            <rect x="358" y="232" width="112" height="165" fill="#4CAF50" opacity=".22" stroke="#4CAF50" stroke-width="1.5" rx="2"/>
+            <text x="414" y="304" text-anchor="middle" font-size="10" fill="#2E7D1F" font-weight="800">B3</text>
+            <text x="414" y="319" text-anchor="middle" font-size="8" fill="#2E7D1F">1 Acre</text>
+            <text x="414" y="332" text-anchor="middle" font-size="8" fill="#43A047" font-weight="700">AVAILABLE</text>
+
+            <rect x="478" y="232" width="112" height="165" fill="#F5921E" opacity=".22" stroke="#F5921E" stroke-width="1.5" rx="2"/>
+            <text x="534" y="304" text-anchor="middle" font-size="10" fill="#c47518" font-weight="800">B4</text>
+            <text x="534" y="319" text-anchor="middle" font-size="8" fill="#c47518">1 Acre</text>
+            <text x="534" y="332" text-anchor="middle" font-size="8" fill="#E65100" font-weight="700">RESERVED</text>
+
+            <!-- Compass rose -->
+            <g transform="translate(630,35)">
+              <circle cx="0" cy="0" r="18" fill="rgba(0,0,0,.08)" stroke="#aaa" stroke-width="1"/>
+              <polygon points="0,-14 -5,0 0,-4 5,0" fill="#2E7D1F"/>
+              <polygon points="0,14 -5,0 0,4 5,0" fill="#aaa"/>
+              <text x="0" y="-17" text-anchor="middle" font-size="8" fill="#2E7D1F" font-weight="800">N</text>
+            </g>
+
+            <!-- Scale bar -->
+            <g transform="translate(90,400)">
+              <line x1="0" y1="0" x2="60" y2="0" stroke="#888" stroke-width="2"/>
+              <line x1="0" y1="-4" x2="0" y2="4" stroke="#888" stroke-width="2"/>
+              <line x1="60" y1="-4" x2="60" y2="4" stroke="#888" stroke-width="2"/>
+              <text x="30" y="12" text-anchor="middle" font-size="8" fill="#888">~200m</text>
+            </g>
+          </svg>
+        </div>
+        <div class="subdiv-note">
+          &#9432;&nbsp; This is a representative subdivision layout. Actual plot boundaries are as per the official survey plan. Contact us for the full registered survey map.
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /prod-left -->
+
+  <!-- RIGHT: STICKY ENQUIRY CARD -->
+  <div class="prod-sticky">
+    <div class="sticky-card">
+      <div class="sticky-top">
+        <div class="sticky-price">KES 1.5M</div>
+        <div class="sticky-price-sub">per 1-acre plot · flexible payment plans</div>
+        <div class="sticky-avail">
+          <div class="avail-dot"></div>
+          <div class="avail-text">Plots Available — Act Fast</div>
+        </div>
+      </div>
+      <div class="sticky-body">
+        <div class="sticky-specs">
+          <div class="ss-item"><div class="ss-val">1 Acre</div><div class="ss-key">Plot Size</div></div>
+          <div class="ss-item"><div class="ss-val">Ready</div><div class="ss-key">Title Deed</div></div>
+          <div class="ss-item"><div class="ss-val">Tarmac</div><div class="ss-key">Road Access</div></div>
+          <div class="ss-item"><div class="ss-val">20%</div><div class="ss-key">Min. Deposit</div></div>
+        </div>
+        <div class="sticky-divider"></div>
+        <div class="sticky-label">Send Enquiry</div>
+        <div class="form-group">
+          <input type="text" placeholder="Your Full Name" id="s-name">
+        </div>
+        <div class="form-group">
+          <input type="tel" placeholder="Phone / WhatsApp" id="s-phone">
+        </div>
+        <div class="form-group">
+          <select id="s-intent">
+            <option value="">Interested in...</option>
+            <option>Buying for investment</option>
+            <option>Holiday home / Airbnb</option>
+            <option>Site visit request</option>
+            <option>Payment plan info</option>
+            <option>General enquiry</option>
+          </select>
+        </div>
+        <button class="cta-primary" onclick="submitEnquiry()">&#128231; Send Enquiry Now</button>
+        <a href="https://wa.me/254711465650?text=Hi%20ArdhiSoko%2C%20I%27m%20interested%20in%20Malindi%20Ocean%20View%20Acres.%20Please%20send%20me%20more%20details." target="_blank" class="cta-wa">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us Now
+        </a>
+        <a href="tel:+254711465650" class="cta-call">&#128222; Call +254 711 465 650</a>
+        <div class="sticky-trust">
+          <div class="trust-item"><span class="trust-icon">✓</span> Title deed verified &amp; registered</div>
+          <div class="trust-item"><span class="trust-icon">✓</span> Free site visit included</div>
+          <div class="trust-item"><span class="trust-icon">✓</span> No hidden fees or charges</div>
+          <div class="trust-item"><span class="trust-icon">✓</span> Legal conveyancing handled</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /product-layout -->
+
+<!-- SIMILAR PROPERTIES -->
+<div class="similar-section">
+  <div class="sec-eyebrow">You May Also Like</div>
+  <div class="sec-title">Other <span>available projects</span></div>
+  <div class="similar-grid">
+    <div class="sim-card" onclick="window.location='konza.html'">
+      <div class="sim-img"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=400&q=80" alt="Konza"></div>
+      <div class="sim-body">
+        <div class="sim-loc">&#128205; Konza, Machakos County</div>
+        <div class="sim-name">Konza Technopolis Plots</div>
+        <div class="sim-feats">
+          <span class="sim-feat">1/8 Acre</span>
+          <span class="sim-feat">Title Deed</span>
+          <span class="sim-feat">Near SGR</span>
+          <span class="sim-feat">High ROI</span>
+        </div>
+        <div class="sim-footer">
+          <div class="sim-price">KES 450K / plot</div>
+          <a href="konza.html" class="sim-cta">View Details</a>
+        </div>
+      </div>
+    </div>
+    <div class="sim-card" onclick="window.location='kamakis.html'">
+      <div class="sim-img"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=400&q=80" alt="Kamakis"></div>
+      <div class="sim-body">
+        <div class="sim-loc">&#128205; Kamakis, Ruiru &mdash; Kiambu County</div>
+        <div class="sim-name">Kamakis Urban Residences</div>
+        <div class="sim-feats">
+          <span class="sim-feat">1–3 Bed</span>
+          <span class="sim-feat">Off-Plan</span>
+          <span class="sim-feat">Parking</span>
+          <span class="sim-feat">Gym</span>
+        </div>
+        <div class="sim-footer">
+          <div class="sim-price">From KES 3.2M</div>
+          <a href="kamakis.html" class="sim-cta">View Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-grid">
+    <div>
+      <div class="f-logo-wrap">
+        <div class="f-logo-tri"></div>
+        <div>
+          <div class="f-logo-text"><span class="ardhi">Ardhi</span><span class="soko">Soko</span></div>
+          <div class="f-tagline">Premium Living, Smart Investing</div>
+        </div>
+      </div>
+      <p class="f-about">ArdhiSoko is a Kenyan property developer offering premium land and residential investments in Malindi, Konza, and Kamakis Ruiru. Every project is title-deed verified and backed by flexible payment plans.</p>
+      <div class="f-socials"><div class="fsoc">X</div><div class="fsoc">f</div><div class="fsoc">in</div><div class="fsoc">&#9654;</div><div class="fsoc">&#128247;</div></div>
+    </div>
+    <div class="f-col">
+      <h5>Our Projects</h5>
+      <ul class="f-links">
+        <li><a href="malindi.html">Malindi Ocean View Acres</a></li>
+        <li><a href="konza.html">Konza Technopolis Plots</a></li>
+        <li><a href="kamakis.html">Kamakis Urban Residences</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>Company</h5>
+      <ul class="f-links">
+        <li><a href="about.html">About ArdhiSoko</a></li>
+        <li><a href="#">Payment Plans</a></li>
+        <li><a href="#">Site Visits</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>Contact</h5>
+      <ul class="f-contact">
+        <li>&#128205; Westlands, Nairobi, Kenya</li>
+        <li>&#128222; +254 711 465 650</li>
+        <li>&#9993;&#65039; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b7dfd2dbdbd8f7d6c5d3dfdec4d8dcd899d4d899dcd2">[email&#160;protected]</a></li>
+        <li>&#128172; WhatsApp us</li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <span>&copy; 2025 ArdhiSoko Ltd. All rights reserved.</span>
+    <span>Privacy &middot; Terms</span>
+  </div>
+</footer>
+
+<a href="https://wa.me/254711465650?text=Hi%20ArdhiSoko%2C%20I%27m%20interested%20in%20Malindi%20Ocean%20View%20Acres." class="wa-btn" target="_blank">&#128172;</a>
+
+<div class="toast" id="toast"></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── GALLERY ──
+var gImgs = [
+  'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1400&q=85',
+  'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1400&q=85',
+  'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1400&q=85',
+  'https://images.unsplash.com/photo-1503751071777-d2918b21bbd9?w=1400&q=85',
+  'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1400&q=85'
+];
+var gCur = 0;
+
+function gGoto(i) {
+  gCur = i;
+  document.getElementById('gallery-img').src = gImgs[i];
+  document.getElementById('gallery-counter').innerHTML = '&#128247; ' + (i+1) + ' / ' + gImgs.length;
+  document.querySelectorAll('.g-thumb').forEach(function(t,j){ t.classList.toggle('active', j===i); });
+}
+function gNext() { gGoto((gCur + 1) % gImgs.length); }
+function gPrev() { gGoto((gCur - 1 + gImgs.length) % gImgs.length); }
+
+// keyboard
+document.addEventListener('keydown', function(e){
+  if(e.key==='ArrowRight') gNext();
+  if(e.key==='ArrowLeft') gPrev();
+});
+
+// Auto slide
+var gTimer = setInterval(gNext, 4500);
+document.getElementById('gallery-main').addEventListener('mouseenter', function(){ clearInterval(gTimer); });
+document.getElementById('gallery-main').addEventListener('mouseleave', function(){ gTimer = setInterval(gNext, 4500); });
+
+// ── ENQUIRY FORM ──
+function submitEnquiry() {
+  var name = document.getElementById('s-name').value.trim();
+  var phone = document.getElementById('s-phone').value.trim();
+  var intent = document.getElementById('s-intent').value;
+  if (!name || !phone) { showToast('Please enter your name and phone number.', false); return; }
+  var msg = 'Hi ArdhiSoko, I am interested in Malindi Ocean View Acres.\n\nName: ' + name + '\nPhone: ' + phone + (intent ? '\nInterest: ' + intent : '');
+  window.open('https://wa.me/254711465650?text=' + encodeURIComponent(msg), '_blank');
+  showToast('Opening WhatsApp with your enquiry…', true);
+  document.getElementById('s-name').value = '';
+  document.getElementById('s-phone').value = '';
+  document.getElementById('s-intent').value = '';
+}
+
+// ── TOAST ──
+function showToast(msg, ok) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.background = ok ? 'var(--green)' : 'var(--orange-dark)';
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 3500);
+}
+
+// ── MOBILE SEARCH ──
+(function(){
+  var btn = document.querySelector('.nav-search-btn');
+  var inp = document.querySelector('.nav-search-input');
+  if(!btn||!inp) return;
+  btn
